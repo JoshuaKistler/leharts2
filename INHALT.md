@@ -218,9 +218,9 @@ Menü → Kopfbereich (Website-Titel, Logo) → Kopfbild (je Seite verschieden, 
 | 20 | `IMG_4456.jpg` [nachgeladen] | 3858 × 2893 | IMG_4456 |
 | 21 | `IMG_4560.jpg` [nachgeladen] | 2882 × 3844 | IMG_4560 |
 | 22 | `IMG_5447.jpg` [nachgeladen] | 750 × 750 | IMG_5447 |
-| 23 | `leharts_juden_n***a.jpg` [nachgeladen; ⚠️ Name hier bewusst gekürzt, siehe Hinweis unten] | 3024 × 4032 | [⚠️ = Dateiname ohne Endung; nicht übernehmen] |
+| 23 | Slideshow Nr. 23: Datei umbenannt zu painting-23.jpg, wird nicht verwendet (Entscheidung offen, mit der Künstlerin klären) | | |
 
-> ⚠️ **Hinweis zu Nr. 23:** Der Dateiname – und damit der öffentlich angezeigte Titel und alt-Text – enthält eine rassistische Beleidigung (N-Wort). Er ist hier absichtlich gekürzt, damit er nicht versehentlich auf die neue Website oder in ein öffentliches Repository gelangt. Exakter Name: die einzige Datei in `C:\Users\taakijo2\Documents\leharts\Bilder`, die mit `leharts_juden_` beginnt. Details: [INHALT-PRUEFEN.md](INHALT-PRUEFEN.md), Punkt 3.1.
+> **Hinweis zu Nr. 23:** Slideshow Nr. 23: Datei umbenannt zu painting-23.jpg, wird nicht verwendet (Entscheidung offen, mit der Künstlerin klären). Details: [INHALT-PRUEFEN.md](INHALT-PRUEFEN.md), Punkt 3.1.
 
 ### Inhalt – Teil 3: Einzelbilder [Bildtexte in kleiner Schrift]
 

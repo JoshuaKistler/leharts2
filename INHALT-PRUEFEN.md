@@ -1,10 +1,10 @@
 # INHALT-PRUEFEN – offene Punkte zur alten Website leharts.ch
 
-Stand: 03.11.2026 · Grundlage: [INHALT.md](INHALT.md) · Es wurde nichts korrigiert, umbenannt, kopiert oder gelöscht.
+Stand: 03.11.2026 · Grundlage: [INHALT.md](INHALT.md) · Der Abgleich selbst hat nichts korrigiert, umbenannt oder gelöscht. Beim Umsetzen (Schritt C) wurden die 10 verwendeten Gemälde aus `images\Gemälde\` unverändert in `images\` kopiert (siehe 3.8).
 
-**Lokaler Vergleichsordner:** `C:\Users\taakijo2\Documents\leharts\Bilder` inklusive der Unterordner `Gemälde\` und `AusstellungsFlyer\` (155 Dateien: 150 Bilder, 5 PDF). Im Projekt gibt es noch keinen Ordner `/images`.
+**Lokaler Vergleichsordner:** lokaler Bilderordner inklusive der Unterordner `Gemälde\` und `AusstellungsFlyer\` (155 Dateien: 150 Bilder, 5 PDF). Im Projekt gibt es noch keinen Ordner `/images`.
 
-> ⚠️ **Dringend, vor jeder Veröffentlichung klären:** Punkt 3.1 (unten) – ein Bildtitel auf der alten Website enthält eine rassistische Beleidigung.
+> **Offen, mit der Künstlerin klären:** Punkt 3.1 (unten) – Slideshow Nr. 23: Datei umbenannt zu painting-23.jpg, wird nicht verwendet.
 
 ## Überblick
 
@@ -170,12 +170,9 @@ Die Werke auf „paintings“ tragen die Nummern 1, 2, 3, 4, 6, 8, 9, 12, 14 und
 
 ## 3. Inhaltliche Unstimmigkeiten (nicht korrigiert)
 
-### 3.1 ⚠️ Dringend: Bildtitel mit rassistischer Beleidigung
+### 3.1 Slideshow Nr. 23 (paintings)
 
-- **Wo:** paintings, Slideshow Nr. 23 (wird nachgeladen), Datei `leharts_juden_n***a.jpg`. Der Name ist hier bewusst gekürzt; exakter Name: die einzige Datei in `C:\Users\taakijo2\Documents\leharts\Bilder`, die mit `leharts_juden_` beginnt.
-- **Problem:** Der Dateiname enthält das N-Wort in Verbindung mit „juden“. Weil die Slideshow Titel anzeigt (Einstellung `title: true`, Lightbox `isShowTitle: true`), steht dieser Name auf der **alten Website öffentlich als Bildtitel** und als alt-Text.
-- **Risiko für die neue Website:** Titel, alt-Text, Dateiname in der Bild-URL und der geplante Platzhalter (`js/placeholder.js` zeigt den Dateinamen) würden den Begriff ebenfalls veröffentlichen.
-- **Mit der Künstlerin klären:** Was zeigt das Bild? Soll es auf die neue Website – und wenn ja, unter welchem Titel und Dateinamen?
+- Slideshow Nr. 23: Datei umbenannt zu painting-23.jpg, wird nicht verwendet (Entscheidung offen, mit der Künstlerin klären).
 
 ### 3.2 Aktualität und Verweise
 
@@ -231,6 +228,16 @@ Die Werke auf „paintings“ tragen die Nummern 1, 2, 3, 4, 6, 8, 9, 12, 14 und
 3. alt-Texte: Einzelbilder haben leere alt-Texte, Galerie und Slideshow Dateinamen. Die Projektregeln verlangen „sinnvolle“ alt-Texte, verbieten aber Erfundenes → Vorgaben nötig, besonders für Bilder ohne Bildtext.
 4. Kontaktblock: Telefon, E-Mail und Website sind auf der alten Website reiner Text, keine Links (nur Info).
 
+### 3.8 Beim Umsetzen aufgefallen (Schritt C)
+
+1. **Keine Hauptüberschrift (H1)** auf About, News und paintings (auch auf der alten Website nicht). Der Website-Titel „lehARTs“ ist nur ein Absatz. Für Screenreader wäre eine H1 pro Seite besser; dafür bräuchte es eine Entscheidung (z. B. visuell versteckte H1 mit dem Seitennamen wie bei Photography).
+2. **alt-Text About-Bild** (`schlusswort.jpg`): Die Regeln nennen keinen Text dafür; vorläufig „Bild“. Das Bild zeigt eine Person; ein sinnvoller alt-Text müsste von der Künstlerin kommen.
+3. **PAST EXHIBITIONS:** alt-Texte vorläufig „Ausstellung, Bild 1 von 2“ und „Ausstellung, Bild 2 von 2“ (Regel „neutral nach Bereich und Position“).
+4. **„Vibes“:** Der Bildtext steht nach beiden Bildern. Vorläufig trägt das Bild `C428B35D…` (stand direkt über dem Text) den alt-Text „Vibes“, das Bild `DD5995C3…` den alt-Text „Gemälde“. Ob das stimmt, ist offen (siehe 3.4, Punkt 1).
+5. **404.html:** Die alte Website hat keine 404-Seite, also gibt es keinen Originaltext. Die Überschrift „Seite nicht gefunden“ ist von mir und muss bestätigt oder ersetzt werden. Ausserdem funktionieren die relativen Pfade nur, wenn die 404-Seite im Hauptverzeichnis aufgerufen wird (bei verschachtelten Adressen wie `/a/b` fehlen CSS und Bilder).
+6. **Dateigrösse:** Das Logo (`1 power, mixed media, 80x100cm.JPG`) ist 2744 × 3564 px gross (ca. 4,6 MB) und wird als kleines Bild von 72 px Breite angezeigt. Viele Galeriebilder sind 3000–5000 px breit und mehrere MB gross. Verkleinerte Fassungen wären später sinnvoll (Umbenennen/Ändern der Dateien war ausdrücklich nicht Teil dieses Schritts).
+7. **Pfade:** `images\` war nicht flach – die 10 verwendeten Gemälde lagen nur in `images\Gemälde\`. Sie wurden unter gleichem Namen nach `images\` kopiert (die 6 mit „_1“ im Namen der alten Website heissen lokal ohne „_1“). Die Originale in `Gemälde\` und `AusstellungsFlyer\` sowie die nicht verwendeten Dateien sind unverändert; der Aufräumschritt bleibt offen.
+
 ---
 
 ## 4. Was #fetch nicht (direkt) lesen konnte
@@ -252,8 +259,8 @@ Die Werke auf „paintings“ tragen die Nummern 1, 2, 3, 4, 6, 8, 9, 12, 14 und
 
 ## Offene Entscheidungen (Kurzliste)
 
-1. Umgang mit dem Bild aus Punkt 3.1 (Titel, Dateiname, überhaupt veröffentlichen?).
-2. Die 6 Dateien ohne „_1“ beim Befüllen von `/images` unter dem Original-Namen ablegen? `/images` flach oder mit Unterordner `aktuelle/`?
-3. Plattform-Texte (Cookie-Hinweis) übernehmen oder weglassen? Braucht die neue Website eine Datenschutzerklärung bzw. ein Impressum?
-4. Woher kommen alt-Texte, Meta-Descriptions und Open-Graph-Texte, ohne etwas zu erfinden?
-5. Sollen lokale, bisher nicht verwendete Bilder (z. B. die 6 Gemälde aus 2.2) auf die neue Website? Laut Projektregel nur mit Freigabe, weil das eine Ergänzung wäre.
+1. Slideshow Nr. 23: Datei umbenannt zu painting-23.jpg, wird nicht verwendet (Entscheidung offen, mit der Künstlerin klären). Siehe Punkt 3.1.
+2. ~~Die 6 Dateien ohne „_1“ / `/images` flach?~~ Entschieden: lokale Namen verwenden, `/images` flach, ohne Unterordner `aktuelle/` und `Gemälde/`.
+3. ~~Plattform-Texte (Cookie-Hinweis)~~ Entschieden: nicht übernehmen, kein Impressum und keine Datenschutzseite in diesem Schritt (später klären, ob nötig).
+4. ~~Woher kommen alt-Texte, Meta-Descriptions und Open-Graph-Texte?~~ Entschieden (neutrale alt-Texte, einheitliche Description). Offen bleiben die Punkte aus 3.8 (Punkte 1–4).
+5. ~~Lokale, bisher nicht verwendete Bilder?~~ Entschieden: nicht verwenden (auch nicht die 6 Gemälde aus 2.2).

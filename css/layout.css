@@ -1,0 +1,134 @@
+/* ==========================================================================
+   layout.css – Seitengerüst: Kopfbereich, Navigation, Hauptspalte,
+   Seitenleiste (Kontaktblock) und Fusszeile.
+   Mobile-first: die Basis-Regeln gelten ab 320px, grössere Bildschirme
+   werden mit min-width-Media-Queries ergänzt.
+   ========================================================================== */
+
+/* ---------- Kopfbereich ---------- */
+
+.site-header {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-m);
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-m);
+  margin-bottom: var(--space-m);
+}
+
+.site-header__title {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* Logo = Gemälde "Power": Hochformat in kleiner Anzeigegrösse */
+.site-header__logo {
+  width: 4.5rem;
+  height: auto;
+  border-radius: 0.25rem;
+}
+
+/* ---------- Navigation (reine Link-Liste, funktioniert ohne JavaScript) ---------- */
+
+.site-nav__list {
+  display: flex;
+  flex-wrap: wrap; /* bricht auf kleinen Bildschirmen in mehrere Zeilen um */
+  gap: var(--space-xs) var(--space-m);
+}
+
+.site-nav__link {
+  display: inline-block;
+  padding: var(--space-xs) 0;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav__link:hover {
+  border-bottom-color: var(--color-border);
+}
+
+.site-nav__link[aria-current="page"] {
+  font-weight: 700;
+  border-bottom-color: var(--color-accent);
+}
+
+/* ---------- Hauptbereich und Seitenleiste ---------- */
+
+.page {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-l) var(--space-m);
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.page__main {
+  /* verhindert, dass breite Inhalte die Grid-Spalte sprengen */
+  min-width: 0;
+}
+
+/* Abstand zwischen mehreren Blöcken im Hauptbereich (z. B. die 3 Teile von "paintings") */
+.page__main > * + * {
+  margin-top: var(--space-xl);
+}
+
+.sidebar {
+  display: grid;
+  gap: var(--space-l);
+  align-content: start;
+}
+
+.contact {
+  line-height: 1.7;
+}
+
+.contact__social {
+  display: inline-flex;
+  margin-top: var(--space-s);
+  color: var(--color-accent);
+}
+
+.contact__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+/* ---------- Fusszeile ---------- */
+
+.site-footer {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-l) var(--space-m);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ---------- Ab 64em: Hauptspalte und Seitenleiste nebeneinander ---------- */
+
+@media (min-width: 64em) {
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-l);
+    padding: var(--space-l);
+  }
+
+  .site-header__brand {
+    margin-bottom: 0;
+  }
+
+  .page {
+    grid-template-columns: minmax(0, 1fr) var(--sidebar-width);
+    padding: var(--space-l);
+  }
+
+  .site-footer {
+    padding: var(--space-l);
+  }
+}

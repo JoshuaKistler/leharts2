@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>lehARTs - About</title>
+  <meta name="description" content="Bilder sagen mehr als tausend Worte">
+  <meta name="keywords" content="Kultur, Kunst">
+  <meta property="og:title" content="lehARTs - About">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Bilder sagen mehr als tausend Worte">
+  <!-- og:image: relativer Pfad, muss mit der Domain zu einer absoluten URL ergänzt werden -->
+  <meta property="og:image" content="images/1%20power%2C%20mixed%20media%2C%2080x100cm.JPG">
+  <!-- og:url folgt, sobald die Domain feststeht -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- Kopfbereich mit Logo, Website-Titel und Menü (auf allen Seiten gleich) -->
+  <header class="site-header">
+    <div class="site-header__brand">
+      <img class="site-header__logo" src="images/1%20power%2C%20mixed%20media%2C%2080x100cm.JPG" alt="" width="2744" height="3564">
+      <p class="site-header__title">lehARTs</p>
+    </div>
+    <nav class="site-nav" aria-label="Hauptmenü">
+      <ul class="site-nav__list">
+        <li><a class="site-nav__link" href="index.html" aria-current="page">About</a></li>
+        <li><a class="site-nav__link" href="news.html">News</a></li>
+        <li><a class="site-nav__link" href="past-exhibitions.html">PAST EXHIBITIONS</a></li>
+        <li><a class="site-nav__link" href="paintings.html">paintings</a></li>
+        <li><a class="site-nav__link" href="photography.html">Photography</a></li>
+        <li><a class="site-nav__link" href="more-projects.html">More Projects</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Kopfbild (dekorativ) -->
+  <div class="banner">
+    <img class="banner__image" src="images/IMG_3849.jpg" alt="" width="696" height="975" loading="lazy">
+  </div>
+
+  <div class="page">
+
+    <main class="page__main">
+      <div class="text-block">
+        <p><strong>Farbige Lebendigkeit</strong></p>
+        <p>Die Ideen für Kistlers kreatives Tun entstehen beim bewussten Beobachten der Umgebung. „In der Natur finde ich die schönsten Kunstwerke“, sagt sie. Durch diese wird sie beflügelt, ihre Ideen in Farbe zu tauchen. Kistler malt, fotografiert und gestaltet Skulpturen. Sie lässt sich thematisch und technisch nicht einschränken. Im Vordergrund sind meist Tier und Mensch, denen sie mit Farbe und Strich Lebendigkeit verleiht. „Offen, spontan, experimentierfreudig“ sind die Attribute, welche das Wesen und das Schaffen von Kistler am besten beschreiben. Ihre Kreativität scheint grenzenlos. Als Sekundarlehrerin in Buttikon unterrichtet sie das Fach „Bildnerisches Gestalten“ und setzt so ihr grosses Talent auch beruflich ein.</p>
+        <img class="text-block__image" src="images/schlusswort.jpg" alt="Bild" width="750" height="932" loading="lazy">
+      </div>
+    </main>
+
+    <!-- Seitenleiste: Kontaktblock (auf allen Seiten gleich), darunter die Box nur auf About -->
+    <aside class="sidebar" aria-label="Kontakt">
+      <address class="contact">
+        <strong>Rahel Kistler</strong><br>
+        Zopfstrasse 10<br>
+        8855 Wangen SZ<br>
+        Tel: 079 756 72 57<br>
+        info@leharts.ch<br>
+        www.lehARTs.ch<br>
+        <a class="contact__social" href="https://www.instagram.com/leharts.ch/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg class="contact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </a>
+      </address>
+
+      <div class="notice">
+        <p class="notice__title">Zukünftige Ausstellungen <span class="notice__gap">!!!</span></p>
+        <p class="notice__hint">(für mehr Infos, auf <a href="news.html">News</a> klicken)</p>
+        <a class="button" href="https://kunstschwyz.ch" target="_blank" rel="noopener noreferrer">Hier geht's zur Kunstschwyz Seite</a>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer class="site-footer">
+    <p><a href="index.html">Startseite</a></p>
+  </footer>
+
+</body>
+</html>
