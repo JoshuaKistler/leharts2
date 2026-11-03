@@ -1,36 +1,146 @@
 /* ==========================================================================
-   base.css – Reset, CSS-Variablen, Typografie
-   Alle Farben, Abstände und Schriften werden hier als Custom Properties
-   (--name) definiert und in den anderen Dateien nur noch mit var(--name)
-   benutzt. So lässt sich das Design später an einer Stelle ändern.
+   base.css – Schriften, Design-Variablen (Custom Properties), Reset, Typografie
+   Design-Konzept C «Farbspritzer-Salon»: helles Cremeweiss, Aubergine-Schwarz
+   als Textfarbe und kräftige Akzentfarben aus den Werken (Violett, Karmin,
+   Limette, Fuchsorange, Himmelblau).
    ========================================================================== */
 
-:root {
-  /* Farben (neutrale Platzhalter, Akzentfarben aus den Werken folgen später) */
-  --color-bg: #ffffff;
-  --color-surface: #f4f4f2;
-  --color-text: #222222;
-  --color-text-muted: #595959;
-  --color-border: #d9d9d6;
-  --color-accent: #333333;
-  --color-focus: #1a5fd0;
-  /* Blau der Box "Zukünftige Ausstellungen" von der alten Website */
-  --color-notice: #0029ff;
+/* ---------- Schriften (lokal, SIL Open Font License 1.1, siehe /fonts/OFL-*.txt) ---------- */
 
-  /* Schriften (Systemschriften; lokale woff2-Dateien in /fonts folgen später) */
-  --font-serif: Georgia, "Times New Roman", serif;
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+/* Young Serif: kräftige, freundliche Serifenschrift für Titel (nur ein Schnitt: 400) */
+@font-face {
+  font-family: "Young Serif";
+  src: url("../fonts/young-serif-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; /* Text sofort mit Ersatzschrift zeigen, dann austauschen */
+}
+
+/* Figtree: variable Schrift – EINE Datei enthält alle Stärken von 300 bis 900 */
+@font-face {
+  font-family: "Figtree";
+  src: url("../fonts/figtree-latin-wght-normal.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("../fonts/figtree-latin-wght-italic.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ---------- Design-Variablen ---------- */
+
+:root {
+  /* Grundfarben. Kontrast (WCAG) jeweils auf --color-cream gemessen */
+  --color-cream: #fffbf5;   /* Seitenhintergrund */
+  --color-paper: #f6eee3;   /* etwas dunklere Fläche, z. B. Passepartout */
+  --color-ink: #22162b;     /* Text, 16:1 */
+  --color-muted: #5a4e63;   /* Bildtexte, 7.4:1 */
+
+  /* Akzentfarben, die auch als Textfarbe taugen (AA) */
+  --color-violet: #5b2a86;  /* aus «sorpresa», 10:1 */
+  --color-red: #c21f3a;     /* Karmin aus «Power», 5.6:1 */
+
+  /* Akzentfarben NUR für Flächen, Striche und Kleckse – nie als Textfarbe */
+  --color-lime: #cfe05a;
+  --color-fox: #e07a3f;
+  --color-sky: #9ccbea;
+
+  /* Pro Seite austauschbare Akzente (werden unten per body-Klasse gesetzt) */
+  --accent-ink: var(--color-violet);  /* Text-Akzent */
+  --accent-paint: var(--color-lime);  /* Haupt-Farbfläche */
+  --accent-paint-2: var(--color-fox); /* zweite Farbfläche */
+
+  /* Schriften */
+  --font-display: "Young Serif", Georgia, "Times New Roman", serif;
+  --font-text: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Fliessende Schriftgrössen: clamp(Minimum, bevorzugt, Maximum) */
+  --text-s: 0.875rem;
+  --text-m: 1.0625rem;
+  --text-l: clamp(1.15rem, 1rem + 0.6vw, 1.4rem);
+  --title-s: clamp(1.35rem, 1.1rem + 1vw, 1.9rem);
+  --title-m: clamp(1.9rem, 1.3rem + 2.6vw, 3.4rem);
+  --title-l: clamp(2.25rem, 1rem + 6.5vw, 7rem);
 
   /* Abstände */
-  --space-xs: 0.25rem;
-  --space-s: 0.5rem;
-  --space-m: 1rem;
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-s: 0.75rem;
+  --space-m: 1.25rem;
   --space-l: 2rem;
-  --space-xl: 4rem;
+  --space-xl: clamp(3rem, 2rem + 4vw, 6rem);
+  --space-2xl: clamp(4rem, 2rem + 8vw, 10rem);
 
   /* Layout */
-  --content-max-width: 80rem;
-  --sidebar-width: 18rem;
+  --container: 84rem;
+  --gutter: clamp(1rem, 0.5rem + 3vw, 3rem); /* Seitenrand links/rechts */
+
+  /* Organische Formen: unregelmässige Rundungen ergeben «Kleckse» */
+  --blob-1: 62% 38% 46% 54% / 55% 44% 56% 45%;
+  --blob-2: 42% 58% 63% 37% / 41% 52% 48% 59%;
+  --blob-3: 55% 45% 38% 62% / 62% 38% 62% 38%;
+
+  /* Weiche Bewegung, die leicht «nachfedert» */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /*
+   * Pinselstrich-Formen als SVG-Daten-URLs. Sie werden als CSS-Maske benutzt:
+   * Die Form bestimmt, WO etwas sichtbar ist, die Farbe kommt aus
+   * background-color. So lässt sich jeder Strich per Variable einfärben.
+   * (Daten-URLs statt Dateien, weil Masken aus Dateien beim lokalen Öffnen
+   * über file:// vom Browser blockiert werden.)
+   * Der SVG-Filter (feTurbulence + feDisplacementMap) «verwackelt» die
+   * glatten Kanten, damit sie wie mit dem Pinsel gemalt aussehen.
+   */
+
+  /* Waagrechter Pinselstrich (unter Titeln) */
+  --shape-stroke: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 40' preserveAspectRatio='none'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.08' numOctaves='2'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='7'/%3E%3C/filter%3E%3Cpath filter='url(%23r)' d='M8 22C42 10 110 8 170 11s120-5 182-2c20 1 36 5 40 11 2 6-10 10-34 10-60 1-120-3-180 0S60 35 22 33C9 32 3 27 8 22Z'/%3E%3C/svg%3E");
+
+  /* Grosser, breiter Pinselstrich mit Spritzern (Kopfbilder) */
+  --shape-swash: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 360' preserveAspectRatio='none'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.025' numOctaves='3'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='26'/%3E%3C/filter%3E%3Cg filter='url(%23r)'%3E%3Cpath d='M34 108C124 50 300 38 480 50s340-22 482 20c26 52 22 150 6 220-150 40-330 10-500 28S144 340 44 300C18 240 14 168 34 108Z'/%3E%3Ccircle cx='972' cy='36' r='12'/%3E%3Ccircle cx='940' cy='22' r='6'/%3E%3Ccircle cx='22' cy='334' r='9'/%3E%3C/g%3E%3C/svg%3E");
+
+  /* Senkrechte Wellenlinie, wiederholbar (Zeitleiste) */
+  --shape-wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 160'%3E%3Cpath d='M12 0C20 40 4 120 12 160' fill='none' stroke='black' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");
+
+  /* Unregelmässige, gemalte Oberkante (Fusszeile) */
+  --shape-edge: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='2'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='10'/%3E%3C/filter%3E%3Cpath filter='url(%23r)' d='M-20 80V30C100 10 200 40 320 26s200 14 340 2 240 16 360-4c80-12 140 2 200-4v110Z'/%3E%3C/svg%3E");
+}
+
+/* ---------- Seitenspezifische Akzentfarben (Klasse am <body>) ---------- */
+
+.site--news {
+  --accent-paint: var(--color-fox);
+  --accent-paint-2: var(--color-sky);
+}
+
+.site--exhibitions {
+  --accent-ink: var(--color-red);
+  --accent-paint: var(--color-sky);
+  --accent-paint-2: var(--color-lime);
+}
+
+.site--photography {
+  --accent-ink: var(--color-red);
+  --accent-paint: var(--color-sky);
+  --accent-paint-2: var(--color-fox);
+}
+
+.site--projects {
+  --accent-paint: var(--color-fox);
+  --accent-paint-2: var(--color-lime);
+}
+
+.site--error {
+  --accent-ink: var(--color-red);
+  --accent-paint: var(--color-fox);
+  --accent-paint-2: var(--color-sky);
 }
 
 /* ---------- Reset ---------- */
@@ -47,12 +157,13 @@ h2,
 h3,
 p,
 figure,
+ol,
 ul,
-address,
-blockquote {
+address {
   margin: 0;
 }
 
+ol,
 ul {
   padding: 0;
   list-style: none;
@@ -62,67 +173,83 @@ address {
   font-style: normal;
 }
 
-img {
+img,
+svg {
   display: block;
   max-width: 100%;
-  height: auto;
 }
 
-hr {
-  border: 0;
-  border-top: 1px solid var(--color-border);
-  margin: var(--space-l) 0;
+img {
+  height: auto;
 }
 
 /* ---------- Typografie ---------- */
 
 html {
-  font-size: 100%;
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  /* Platz für die sticky Kopfzeile, wenn zu einem Anker gesprungen wird */
+  scroll-padding-top: 6rem;
 }
 
 body {
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-text);
+  font-size: var(--text-m);
+  line-height: 1.65;
+  /* Dekorative Kleckse dürfen über den Rand ragen, ohne Querscrollen auszulösen */
+  overflow-x: clip;
 }
 
 h1,
 h2,
 h3 {
-  font-family: var(--font-serif);
-  font-weight: 700;
-  line-height: 1.25;
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.15;
+  /* Young Serif hat keinen fetten/kursiven Schnitt: nichts künstlich erzeugen */
+  font-synthesis: none;
+  text-wrap: balance; /* gleichmässig lange Titelzeilen (moderne Browser) */
 }
 
-h1 {
-  font-size: 1.75rem;
-}
-
-h2 {
-  font-size: 1.4rem;
-}
-
-h3 {
-  font-size: 1.15rem;
+p {
+  text-wrap: pretty; /* vermeidet einzelne Wörter in der letzten Zeile */
 }
 
 a {
   color: inherit;
+  text-decoration-thickness: 0.08em;
   text-underline-offset: 0.2em;
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-ink);
 }
 
 /* Sichtbarer Fokus für die Tastaturbedienung */
 :focus-visible {
-  outline: 3px solid var(--color-focus);
+  outline: 3px solid var(--color-violet);
   outline-offset: 3px;
+  border-radius: 0.25rem;
 }
 
-/* ---------- Hilfsklasse ---------- */
+/* ---------- Hilfsklassen ---------- */
 
-/* Für Screenreader sichtbar, optisch versteckt */
+/* Zentrierter Inhaltsbereich mit fliessendem Seitenrand */
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Für Screenreader lesbar, optisch versteckt */
 .visually-hidden {
   position: absolute;
   width: 1px;

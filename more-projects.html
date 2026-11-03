@@ -15,54 +15,66 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
-<body>
+<body class="site site--projects">
 
-  <!-- Kopfbereich mit Logo, Website-Titel und Menü (auf allen Seiten gleich) -->
+  <!-- Kopfzeile: Logo, Titel und Menü (auf allen Seiten gleich, bleibt beim Scrollen oben).
+       Das Menü ist eine normale Link-Liste und funktioniert ohne JavaScript. -->
   <header class="site-header">
-    <div class="site-header__brand">
-      <img class="site-header__logo" src="images/1%20power%2C%20mixed%20media%2C%2080x100cm.JPG" alt="" width="2744" height="3564">
-      <p class="site-header__title">lehARTs</p>
+    <div class="site-header__inner container">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">
+          <img class="brand__logo" src="images/1%20power%2C%20mixed%20media%2C%2080x100cm.JPG" alt="" width="2744" height="3564">
+        </span>
+        <span class="brand__title">leh<span class="brand__art">ART</span>s</span>
+      </a>
+      <nav class="site-nav" aria-label="Hauptmenü">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html">About</a></li>
+          <li><a class="site-nav__link" href="news.html">News</a></li>
+          <li><a class="site-nav__link" href="past-exhibitions.html">PAST EXHIBITIONS</a></li>
+          <li><a class="site-nav__link" href="paintings.html">paintings</a></li>
+          <li><a class="site-nav__link" href="photography.html">Photography</a></li>
+          <li><a class="site-nav__link" href="more-projects.html" aria-current="page">More Projects</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav class="site-nav" aria-label="Hauptmenü">
-      <ul class="site-nav__list">
-        <li><a class="site-nav__link" href="index.html">About</a></li>
-        <li><a class="site-nav__link" href="news.html">News</a></li>
-        <li><a class="site-nav__link" href="past-exhibitions.html">PAST EXHIBITIONS</a></li>
-        <li><a class="site-nav__link" href="paintings.html">paintings</a></li>
-        <li><a class="site-nav__link" href="photography.html">Photography</a></li>
-        <li><a class="site-nav__link" href="more-projects.html" aria-current="page">More Projects</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <!-- Kopfbild (dekorativ) -->
-  <div class="banner">
-    <img class="banner__image" src="images/otherproje10.jpg" alt="" width="4032" height="3024" loading="lazy">
-  </div>
+  <main class="main">
 
-  <div class="page">
-
-    <main class="page__main">
-      <div class="gallery gallery--tiles">
-        <figure class="figure"><img class="figure__image" src="images/bild9.jpg" alt="Projekt, Bild 1 von 12" width="640" height="640" loading="lazy"></figure>
-        <h1 class="gallery__heading">"Kunst für unterwegs - immer dabei, immer einzigartig."</h1>
-        <figure class="figure"><img class="figure__image" src="images/30D5B701-8D16-427F-AE42-7F316DAFE69C.jpg" alt="Projekt, Bild 2 von 12" width="640" height="640" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/skulpturen2.jpg" alt="Projekt, Bild 3 von 12" width="4032" height="3024" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/Skulpturen_1.jpg" alt="Projekt, Bild 4 von 12" width="4032" height="3024" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/otherproject8.jpg" alt="Projekt, Bild 5 von 12" width="2936" height="3850" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/pencildrawing.jpg" alt="Projekt, Bild 6 von 12" width="750" height="550" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/sunprint3.jpg" alt="Projekt, Bild 7 von 12" width="3241" height="2205" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/irgend%20ein%20bildE.jpg" alt="Projekt, Bild 8 von 12" width="1242" height="698" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_4560.jpg" alt="Projekt, Bild 9 von 12" width="2882" height="3844" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/sunprint8.jpg" alt="Projekt, Bild 10 von 12" width="3024" height="3024" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/otherproject3.jpg" alt="Projekt, Bild 11 von 12" width="3024" height="4032" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/aquarell7.jpg" alt="Projekt, Bild 12 von 12" width="750" height="984" loading="lazy"></figure>
+    <!-- Kopfbild der alten Website, als gemalter Pinselstrich (dekorativ) -->
+    <div class="stroke-hero container">
+      <div class="stroke-hero__frame">
+        <img class="stroke-hero__image" src="images/otherproje10.jpg" alt="" width="4032" height="3024" loading="lazy">
       </div>
-    </main>
+    </div>
 
-    <!-- Seitenleiste: Kontaktblock (auf allen Seiten gleich) -->
-    <aside class="sidebar" aria-label="Kontakt">
+    <!-- Collage mit Passepartout: die Werke werden nicht beschnitten -->
+    <div class="container">
+      <div class="collage collage--mat">
+        <figure class="collage__item collage__item--big"><img class="collage__image" src="images/bild9.jpg" alt="Projekt, Bild 1 von 12" width="640" height="640" loading="lazy"></figure>
+        <h1 class="collage__heading brush-title">"Kunst für unterwegs - immer dabei, immer einzigartig."</h1>
+        <figure class="collage__item"><img class="collage__image" src="images/30D5B701-8D16-427F-AE42-7F316DAFE69C.jpg" alt="Projekt, Bild 2 von 12" width="640" height="640" loading="lazy"></figure>
+        <figure class="collage__item"><img class="collage__image" src="images/skulpturen2.jpg" alt="Projekt, Bild 3 von 12" width="4032" height="3024" loading="lazy"></figure>
+        <figure class="collage__item"><img class="collage__image" src="images/Skulpturen_1.jpg" alt="Projekt, Bild 4 von 12" width="4032" height="3024" loading="lazy"></figure>
+        <figure class="collage__item collage__item--tall"><img class="collage__image" src="images/otherproject8.jpg" alt="Projekt, Bild 5 von 12" width="2936" height="3850" loading="lazy"></figure>
+        <figure class="collage__item"><img class="collage__image" src="images/pencildrawing.jpg" alt="Projekt, Bild 6 von 12" width="750" height="550" loading="lazy"></figure>
+        <figure class="collage__item collage__item--wide"><img class="collage__image" src="images/sunprint3.jpg" alt="Projekt, Bild 7 von 12" width="3241" height="2205" loading="lazy"></figure>
+        <figure class="collage__item collage__item--wide"><img class="collage__image" src="images/irgend%20ein%20bildE.jpg" alt="Projekt, Bild 8 von 12" width="1242" height="698" loading="lazy"></figure>
+        <figure class="collage__item collage__item--tall"><img class="collage__image" src="images/IMG_4560.jpg" alt="Projekt, Bild 9 von 12" width="2882" height="3844" loading="lazy"></figure>
+        <figure class="collage__item"><img class="collage__image" src="images/sunprint8.jpg" alt="Projekt, Bild 10 von 12" width="3024" height="3024" loading="lazy"></figure>
+        <figure class="collage__item collage__item--tall"><img class="collage__image" src="images/otherproject3.jpg" alt="Projekt, Bild 11 von 12" width="3024" height="4032" loading="lazy"></figure>
+        <figure class="collage__item collage__item--tall"><img class="collage__image" src="images/aquarell7.jpg" alt="Projekt, Bild 12 von 12" width="750" height="984" loading="lazy"></figure>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Fusszeile mit Kontaktblock (auf allen Seiten gleich) -->
+  <footer class="site-footer">
+    <div class="site-footer__inner container">
       <address class="contact">
         <strong>Rahel Kistler</strong><br>
         Zopfstrasse 10<br>
@@ -78,12 +90,8 @@
           </svg>
         </a>
       </address>
-    </aside>
-
-  </div>
-
-  <footer class="site-footer">
-    <p><a href="index.html">Startseite</a></p>
+      <p class="site-footer__home"><a class="site-footer__link" href="index.html">Startseite</a></p>
+    </div>
   </footer>
 
 </body>

@@ -1,0 +1,319 @@
+/* ==========================================================================
+   animations.css – alle Bewegungen an einem Ort (nur CSS, kein JavaScript)
+
+   Grundregel: Die NORMALEN Stile zeigen immer den fertigen, sichtbaren
+   Zustand. Animationen spielen nur den Weg dorthin ab. Fällt eine Animation
+   weg (alter Browser, reduzierte Bewegung), bleibt alles sichtbar.
+
+   1. Keyframes
+   2. Einblenden beim Laden (für alle Browser)
+   3. Scroll-getriebene Effekte (nur wo animation-timeline unterstützt wird)
+   4. prefers-reduced-motion: Bewegung abschalten
+   ========================================================================== */
+
+/* ---------- 1. Keyframes ---------- */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Von unten einschweben (nur «from»: Ziel ist der normale Zustand) */
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 2rem;
+  }
+}
+
+/* Leicht vergrössert und transparent → normal (gestaffelte Galerie-Bilder) */
+@keyframes settle {
+  from {
+    opacity: 0;
+    scale: 0.94;
+  }
+}
+
+/* Nur die Lage, ohne Transparenz (Scroll-Effekt für Galerie-Bilder) */
+@keyframes slide-up {
+  from {
+    translate: 0 3rem;
+  }
+}
+
+/* Pinselstrich wird von links nach rechts «gemalt».
+   Negative inset-Werte lassen rundherum Luft, damit schräg gestellte oder
+   versetzte Teile (z. B. der Farbstrich hinter dem Kopfbild) nicht
+   abgeschnitten werden. */
+@keyframes paint {
+  from {
+    clip-path: inset(-50% 100% -50% -10%);
+  }
+  to {
+    clip-path: inset(-50% -10% -50% -10%);
+  }
+}
+
+/* Klecks verändert langsam seine Form */
+@keyframes morph {
+  0%,
+  100% {
+    border-radius: var(--blob-1);
+  }
+  33% {
+    border-radius: var(--blob-2);
+  }
+  66% {
+    border-radius: var(--blob-3);
+  }
+}
+
+/* «!!!» wackelt kurz, dann Pause */
+@keyframes wiggle {
+  0%,
+  70%,
+  100% {
+    rotate: 0deg;
+  }
+  76% {
+    rotate: -10deg;
+  }
+  84% {
+    rotate: 8deg;
+  }
+  92% {
+    rotate: -4deg;
+  }
+}
+
+/* Kleckse treiben sanft */
+@keyframes float {
+  50% {
+    translate: 0 -0.75rem;
+  }
+}
+
+/* Tupfer auf der Zeitleiste ploppen auf */
+@keyframes pop {
+  from {
+    scale: 0;
+  }
+}
+
+/* Zeitleiste: Linie wird von oben nach unten aufgedeckt (clip-path statt
+   scale, damit die Wellenform nicht gestaucht wird) */
+@keyframes grow-down {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Kopfbild: Ausschnitt wandert beim Scrollen (Parallax-Gefühl) */
+@keyframes drift {
+  from {
+    object-position: 50% 15%;
+  }
+  to {
+    object-position: 50% 85%;
+  }
+}
+
+/* Kopfzeile bekommt beim Scrollen einen Schatten */
+@keyframes header-lift {
+  to {
+    box-shadow: 0 12px 30px -22px rgb(34 22 43 / 0.5);
+    border-bottom-color: transparent;
+  }
+}
+
+/* Fusszeilen-Klecks dreht sich beim Scrollen */
+@keyframes spin-blob {
+  to {
+    rotate: 90deg;
+  }
+}
+
+/* ---------- 2. Einblenden beim Laden ---------- */
+
+/* Gestaffelt: Kopfzeile, dann Inhalt, dann Fusszeile */
+.site-header {
+  animation: fade-in 0.6s ease-out both;
+}
+
+.main {
+  animation: rise 0.9s var(--ease-out) 0.15s both;
+}
+
+/* Nur den Inhalt einblenden, nicht die ganze Fusszeile: opacity würde einen
+   eigenen Stapel-Kontext erzeugen und den Klecks nach vorne holen. */
+.site-footer__inner {
+  animation: fade-in 0.8s ease-out 0.4s both;
+}
+
+/* Pinselstriche unter Titeln malen sich nach dem Laden */
+.brush-title::after {
+  animation: paint 1.1s var(--ease-out) 0.6s both;
+}
+
+/* Kopfbild erscheint wie mit einem breiten Pinsel aufgetragen */
+.stroke-hero__frame {
+  animation: paint 1.4s var(--ease-out) 0.25s both;
+}
+
+/* About */
+.hero__title {
+  animation: rise 1s var(--ease-out) 0.2s both;
+}
+
+.hero__bio {
+  animation: rise 1s var(--ease-out) 0.35s both;
+}
+
+.hero__backdrop {
+  animation: settle 1.1s var(--ease-out) 0.3s both;
+}
+
+.hero__portrait {
+  animation: rise 1.1s var(--ease-spring) 0.65s both;
+}
+
+.hero__blob {
+  animation:
+    settle 1.2s var(--ease-out) 0.1s both,
+    morph 16s ease-in-out 1.3s infinite;
+}
+
+.hero__blob--small {
+  animation:
+    settle 1.2s var(--ease-out) 0.5s both,
+    float 7s ease-in-out 1.7s infinite;
+}
+
+.notice {
+  animation: rise 1s var(--ease-spring) 0.8s both;
+}
+
+.notice__gap {
+  animation: wiggle 4s ease-in-out 2s infinite;
+}
+
+/* News / 404 */
+.statement__blob--1 {
+  animation:
+    settle 1.2s var(--ease-out) both,
+    morph 14s ease-in-out 1.2s infinite;
+}
+
+.statement__blob--2 {
+  animation:
+    settle 1.2s var(--ease-out) 0.3s both,
+    float 6s ease-in-out 1.5s infinite;
+}
+
+/*
+ * Galerien: Bilder erscheinen nacheinander. --stagger ist die Position
+ * (1, 2, 3 …), daraus wird die Verzögerung berechnet. Ab dem 12. Bild
+ * bleibt die Verzögerung gleich, damit niemand lange warten muss.
+ */
+.masonry > *,
+.collage > *,
+.timeline__item {
+  animation: settle 0.8s var(--ease-out) both;
+  animation-delay: calc(0.25s + var(--stagger, 12) * 70ms);
+}
+
+:is(.masonry, .collage, .timeline) > :nth-child(1) { --stagger: 0; }
+:is(.masonry, .collage, .timeline) > :nth-child(2) { --stagger: 1; }
+:is(.masonry, .collage, .timeline) > :nth-child(3) { --stagger: 2; }
+:is(.masonry, .collage, .timeline) > :nth-child(4) { --stagger: 3; }
+:is(.masonry, .collage, .timeline) > :nth-child(5) { --stagger: 4; }
+:is(.masonry, .collage, .timeline) > :nth-child(6) { --stagger: 5; }
+:is(.masonry, .collage, .timeline) > :nth-child(7) { --stagger: 6; }
+:is(.masonry, .collage, .timeline) > :nth-child(8) { --stagger: 7; }
+:is(.masonry, .collage, .timeline) > :nth-child(9) { --stagger: 8; }
+:is(.masonry, .collage, .timeline) > :nth-child(10) { --stagger: 9; }
+:is(.masonry, .collage, .timeline) > :nth-child(11) { --stagger: 10; }
+
+/* ---------- 3. Scroll-getriebene Effekte ----------
+   animation-timeline koppelt eine Animation an die Scroll-Position statt an
+   die Zeit. view() = «wie weit ist das Element durch den sichtbaren Bereich
+   gewandert», scroll() = «wie weit ist die Seite gescrollt».
+   @supports: Nur Browser, die das können, bekommen diese Regeln.
+   Alle anderen behalten die zeitgesteuerten Animationen von oben. */
+
+@supports (animation-timeline: view()) {
+  /* Kopfzeile: Einblenden (Zeit) + Schatten je nach Scroll-Position */
+  .site-header {
+    animation:
+      fade-in 0.6s ease-out both,
+      header-lift linear both;
+    animation-timeline: auto, scroll(root);
+    animation-range: normal, 0 8rem;
+  }
+
+  /*
+   * Galerie-Bilder: Das gestaffelte Einblenden (Zeit) bleibt für alles,
+   * was beim Laden schon sichtbar ist. Dazu gleiten Bilder weiter unten
+   * beim Hineinscrollen nach oben.
+   */
+  .masonry > *,
+  .collage > *,
+  .timeline__item {
+    animation:
+      settle 0.8s var(--ease-out) both,
+      slide-up linear both;
+    animation-delay: calc(0.25s + var(--stagger, 12) * 70ms), 0s;
+    animation-timeline: auto, view();
+    animation-range: normal, entry 0% entry 80%;
+  }
+
+  /* Tupfer der Zeitleiste ploppen auf, wenn sie ins Bild kommen */
+  .timeline__item::before {
+    animation: pop linear both;
+    animation-timeline: view();
+    animation-range: entry 60% entry 100%;
+  }
+
+  /* Linie der Zeitleiste wächst mit, während man durch die Liste scrollt */
+  .timeline::before {
+    animation: grow-down linear both;
+    animation-timeline: view();
+    animation-range: cover 50vh cover calc(100% - 50vh);
+  }
+
+  /* Kopfbild: Ausschnitt wandert langsam, während es durchs Bild scrollt */
+  .stroke-hero__image {
+    animation: drift linear both;
+    animation-timeline: view();
+    animation-range: cover 0% cover 100%;
+  }
+
+  /* Fusszeilen-Klecks dreht sich, wenn die Fusszeile erscheint */
+  .site-footer::after {
+    animation: spin-blob linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 60%;
+  }
+}
+
+/* ---------- 4. Reduzierte Bewegung ----------
+   Wer im Betriebssystem «Bewegung reduzieren» eingestellt hat, bekommt
+   eine ruhige Seite: keine Animationen, keine Übergänge, kein weiches Scrollen.
+   Da die Grundstile immer den fertigen Zustand zeigen, bleibt alles sichtbar. */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

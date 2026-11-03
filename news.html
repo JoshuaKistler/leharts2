@@ -15,37 +15,44 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
-<body>
+<body class="site site--news">
 
-  <!-- Kopfbereich mit Logo, Website-Titel und Menü (auf allen Seiten gleich) -->
+  <!-- Kopfzeile: Logo, Titel und Menü (auf allen Seiten gleich, bleibt beim Scrollen oben).
+       Das Menü ist eine normale Link-Liste und funktioniert ohne JavaScript. -->
   <header class="site-header">
-    <div class="site-header__brand">
-      <img class="site-header__logo" src="images/1%20power%2C%20mixed%20media%2C%2080x100cm.JPG" alt="" width="2744" height="3564">
-      <p class="site-header__title">lehARTs</p>
+    <div class="site-header__inner container">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">
+          <img class="brand__logo" src="images/1%20power%2C%20mixed%20media%2C%2080x100cm.JPG" alt="" width="2744" height="3564">
+        </span>
+        <span class="brand__title">leh<span class="brand__art">ART</span>s</span>
+      </a>
+      <nav class="site-nav" aria-label="Hauptmenü">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html">About</a></li>
+          <li><a class="site-nav__link" href="news.html" aria-current="page">News</a></li>
+          <li><a class="site-nav__link" href="past-exhibitions.html">PAST EXHIBITIONS</a></li>
+          <li><a class="site-nav__link" href="paintings.html">paintings</a></li>
+          <li><a class="site-nav__link" href="photography.html">Photography</a></li>
+          <li><a class="site-nav__link" href="more-projects.html">More Projects</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav class="site-nav" aria-label="Hauptmenü">
-      <ul class="site-nav__list">
-        <li><a class="site-nav__link" href="index.html">About</a></li>
-        <li><a class="site-nav__link" href="news.html" aria-current="page">News</a></li>
-        <li><a class="site-nav__link" href="past-exhibitions.html">PAST EXHIBITIONS</a></li>
-        <li><a class="site-nav__link" href="paintings.html">paintings</a></li>
-        <li><a class="site-nav__link" href="photography.html">Photography</a></li>
-        <li><a class="site-nav__link" href="more-projects.html">More Projects</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <div class="page">
+  <main class="main">
+    <div class="statement container">
+      <span class="statement__blob statement__blob--1"></span>
+      <span class="statement__blob statement__blob--2"></span>
+      <p class="statement__text"><strong>Es gibt bald Neuigkeiten. Seid gespannt! :)</strong></p>
+    </div>
+  </main>
 
-    <main class="page__main">
-      <div class="text-block">
-        <p><strong>Es gibt bald Neuigkeiten. Seid gespannt! :)</strong></p>
-      </div>
-    </main>
-
-    <!-- Seitenleiste: Kontaktblock (auf allen Seiten gleich) -->
-    <aside class="sidebar" aria-label="Kontakt">
+  <!-- Fusszeile mit Kontaktblock (auf allen Seiten gleich) -->
+  <footer class="site-footer">
+    <div class="site-footer__inner container">
       <address class="contact">
         <strong>Rahel Kistler</strong><br>
         Zopfstrasse 10<br>
@@ -61,12 +68,8 @@
           </svg>
         </a>
       </address>
-    </aside>
-
-  </div>
-
-  <footer class="site-footer">
-    <p><a href="index.html">Startseite</a></p>
+      <p class="site-footer__home"><a class="site-footer__link" href="index.html">Startseite</a></p>
+    </div>
   </footer>
 
 </body>

@@ -15,63 +15,75 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
-<body>
+<body class="site site--photography">
 
-  <!-- Kopfbereich mit Logo, Website-Titel und Menü (auf allen Seiten gleich) -->
+  <!-- Kopfzeile: Logo, Titel und Menü (auf allen Seiten gleich, bleibt beim Scrollen oben).
+       Das Menü ist eine normale Link-Liste und funktioniert ohne JavaScript. -->
   <header class="site-header">
-    <div class="site-header__brand">
-      <img class="site-header__logo" src="images/1%20power%2C%20mixed%20media%2C%2080x100cm.JPG" alt="" width="2744" height="3564">
-      <p class="site-header__title">lehARTs</p>
+    <div class="site-header__inner container">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">
+          <img class="brand__logo" src="images/1%20power%2C%20mixed%20media%2C%2080x100cm.JPG" alt="" width="2744" height="3564">
+        </span>
+        <span class="brand__title">leh<span class="brand__art">ART</span>s</span>
+      </a>
+      <nav class="site-nav" aria-label="Hauptmenü">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html">About</a></li>
+          <li><a class="site-nav__link" href="news.html">News</a></li>
+          <li><a class="site-nav__link" href="past-exhibitions.html">PAST EXHIBITIONS</a></li>
+          <li><a class="site-nav__link" href="paintings.html">paintings</a></li>
+          <li><a class="site-nav__link" href="photography.html" aria-current="page">Photography</a></li>
+          <li><a class="site-nav__link" href="more-projects.html">More Projects</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav class="site-nav" aria-label="Hauptmenü">
-      <ul class="site-nav__list">
-        <li><a class="site-nav__link" href="index.html">About</a></li>
-        <li><a class="site-nav__link" href="news.html">News</a></li>
-        <li><a class="site-nav__link" href="past-exhibitions.html">PAST EXHIBITIONS</a></li>
-        <li><a class="site-nav__link" href="paintings.html">paintings</a></li>
-        <li><a class="site-nav__link" href="photography.html" aria-current="page">Photography</a></li>
-        <li><a class="site-nav__link" href="more-projects.html">More Projects</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <!-- Kopfbild (dekorativ) -->
-  <div class="banner">
-    <img class="banner__image" src="images/IMG_0379_1.JPG" alt="" width="1280" height="720" loading="lazy">
-  </div>
+  <main class="main">
 
-  <div class="page">
-
-    <main class="page__main">
-      <div class="gallery gallery--tiles">
-        <h1 class="visually-hidden">Photography</h1>
-        <figure class="figure"><img class="figure__image" src="images/B829EF0E-C1A8-4975-8ACA-5F9D75505B9E.JPG" alt="Fotografie, Bild 1 von 21" width="1280" height="720" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/BE81EB86-40C6-4E8B-8BF4-5EBAB2C50619_1.jpg" alt="Fotografie, Bild 2 von 21" width="1242" height="699" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/bild%20dreck.jpg" alt="Fotografie, Bild 3 von 21" width="1253" height="683" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/blume.jpg" alt="Fotografie, Bild 4 von 21" width="1150" height="704" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_4191.jpg" alt="Fotografie, Bild 5 von 21" width="2081" height="3699" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_4753.jpg" alt="Fotografie, Bild 6 von 21" width="4032" height="3024" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_5262.jpg" alt="Fotografie, Bild 7 von 21" width="3024" height="4032" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_5386.jpg" alt="Fotografie, Bild 8 von 21" width="3024" height="4032" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_5407.jpg" alt="Fotografie, Bild 9 von 21" width="673" height="1197" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_4619.JPG" alt="Fotografie, Bild 10 von 21" width="1280" height="720" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/photography13.jpg" alt="Fotografie, Bild 11 von 21" width="1280" height="720" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/photography15.jpg" alt="Fotografie, Bild 12 von 21" width="2913" height="3924" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/photography17.jpg" alt="Fotografie, Bild 13 von 21" width="2924" height="2193" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/photography12.jpg" alt="Fotografie, Bild 14 von 21" width="2823" height="2233" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/digitalart8.jpg" alt="Fotografie, Bild 15 von 21" width="572" height="572" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/photography10.jpg" alt="Fotografie, Bild 16 von 21" width="1301" height="1301" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/photography38.jpg" alt="Fotografie, Bild 17 von 21" width="2448" height="3060" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/photography16.jpg" alt="Fotografie, Bild 18 von 21" width="2523" height="2523" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/bilg1.jpg" alt="Fotografie, Bild 19 von 21" width="586" height="640" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/bild8.jpg" alt="Fotografie, Bild 20 von 21" width="480" height="640" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/bild5.jpg" alt="Fotografie, Bild 21 von 21" width="467" height="467" loading="lazy"></figure>
+    <!-- Kopfbild der alten Website, als gemalter Pinselstrich (dekorativ) -->
+    <div class="stroke-hero container">
+      <div class="stroke-hero__frame">
+        <img class="stroke-hero__image" src="images/IMG_0379_1.JPG" alt="" width="1280" height="720" loading="lazy">
       </div>
-    </main>
+    </div>
 
-    <!-- Seitenleiste: Kontaktblock (auf allen Seiten gleich) -->
-    <aside class="sidebar" aria-label="Kontakt">
+    <!-- Collage: breite Bilder über 2 Spalten, hohe über 2 Zeilen -->
+    <div class="container">
+      <h1 class="visually-hidden">Photography</h1>
+      <div class="collage">
+        <figure class="collage__item collage__item--wide"><img class="collage__image" src="images/B829EF0E-C1A8-4975-8ACA-5F9D75505B9E.JPG" alt="Fotografie, Bild 1 von 21" width="1280" height="720" loading="lazy"></figure>
+        <figure class="collage__item collage__item--wide"><img class="collage__image" src="images/BE81EB86-40C6-4E8B-8BF4-5EBAB2C50619_1.jpg" alt="Fotografie, Bild 2 von 21" width="1242" height="699" loading="lazy"></figure>
+        <figure class="collage__item collage__item--wide"><img class="collage__image" src="images/bild%20dreck.jpg" alt="Fotografie, Bild 3 von 21" width="1253" height="683" loading="lazy"></figure>
+        <figure class="collage__item collage__item--wide"><img class="collage__image" src="images/blume.jpg" alt="Fotografie, Bild 4 von 21" width="1150" height="704" loading="lazy"></figure>
+        <figure class="collage__item collage__item--tall"><img class="collage__image" src="images/IMG_4191.jpg" alt="Fotografie, Bild 5 von 21" width="2081" height="3699" loading="lazy"></figure>
+        <figure class="collage__item collage__item--big"><img class="collage__image" src="images/IMG_4753.jpg" alt="Fotografie, Bild 6 von 21" width="4032" height="3024" loading="lazy"></figure>
+        <figure class="collage__item collage__item--tall"><img class="collage__image" src="images/IMG_5262.jpg" alt="Fotografie, Bild 7 von 21" width="3024" height="4032" loading="lazy"></figure>
+        <figure class="collage__item collage__item--tall"><img class="collage__image" src="images/IMG_5386.jpg" alt="Fotografie, Bild 8 von 21" width="3024" height="4032" loading="lazy"></figure>
+        <figure class="collage__item collage__item--tall"><img class="collage__image" src="images/IMG_5407.jpg" alt="Fotografie, Bild 9 von 21" width="673" height="1197" loading="lazy"></figure>
+        <figure class="collage__item collage__item--wide"><img class="collage__image" src="images/IMG_4619.JPG" alt="Fotografie, Bild 10 von 21" width="1280" height="720" loading="lazy"></figure>
+        <figure class="collage__item collage__item--wide"><img class="collage__image" src="images/photography13.jpg" alt="Fotografie, Bild 11 von 21" width="1280" height="720" loading="lazy"></figure>
+        <figure class="collage__item collage__item--tall"><img class="collage__image" src="images/photography15.jpg" alt="Fotografie, Bild 12 von 21" width="2913" height="3924" loading="lazy"></figure>
+        <figure class="collage__item"><img class="collage__image" src="images/photography17.jpg" alt="Fotografie, Bild 13 von 21" width="2924" height="2193" loading="lazy"></figure>
+        <figure class="collage__item"><img class="collage__image" src="images/photography12.jpg" alt="Fotografie, Bild 14 von 21" width="2823" height="2233" loading="lazy"></figure>
+        <figure class="collage__item"><img class="collage__image" src="images/digitalart8.jpg" alt="Fotografie, Bild 15 von 21" width="572" height="572" loading="lazy"></figure>
+        <figure class="collage__item collage__item--big"><img class="collage__image" src="images/photography10.jpg" alt="Fotografie, Bild 16 von 21" width="1301" height="1301" loading="lazy"></figure>
+        <figure class="collage__item collage__item--tall"><img class="collage__image" src="images/photography38.jpg" alt="Fotografie, Bild 17 von 21" width="2448" height="3060" loading="lazy"></figure>
+        <figure class="collage__item"><img class="collage__image" src="images/photography16.jpg" alt="Fotografie, Bild 18 von 21" width="2523" height="2523" loading="lazy"></figure>
+        <figure class="collage__item"><img class="collage__image" src="images/bilg1.jpg" alt="Fotografie, Bild 19 von 21" width="586" height="640" loading="lazy"></figure>
+        <figure class="collage__item collage__item--tall"><img class="collage__image" src="images/bild8.jpg" alt="Fotografie, Bild 20 von 21" width="480" height="640" loading="lazy"></figure>
+        <figure class="collage__item"><img class="collage__image" src="images/bild5.jpg" alt="Fotografie, Bild 21 von 21" width="467" height="467" loading="lazy"></figure>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Fusszeile mit Kontaktblock (auf allen Seiten gleich) -->
+  <footer class="site-footer">
+    <div class="site-footer__inner container">
       <address class="contact">
         <strong>Rahel Kistler</strong><br>
         Zopfstrasse 10<br>
@@ -87,12 +99,8 @@
           </svg>
         </a>
       </address>
-    </aside>
-
-  </div>
-
-  <footer class="site-footer">
-    <p><a href="index.html">Startseite</a></p>
+      <p class="site-footer__home"><a class="site-footer__link" href="index.html">Startseite</a></p>
+    </div>
   </footer>
 
 </body>

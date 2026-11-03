@@ -15,160 +15,171 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
-<body>
+<body class="site site--paintings">
 
-  <!-- Kopfbereich mit Logo, Website-Titel und Menü (auf allen Seiten gleich) -->
+  <!-- Kopfzeile: Logo, Titel und Menü (auf allen Seiten gleich, bleibt beim Scrollen oben).
+       Das Menü ist eine normale Link-Liste und funktioniert ohne JavaScript. -->
   <header class="site-header">
-    <div class="site-header__brand">
-      <img class="site-header__logo" src="images/1%20power%2C%20mixed%20media%2C%2080x100cm.JPG" alt="" width="2744" height="3564">
-      <p class="site-header__title">lehARTs</p>
+    <div class="site-header__inner container">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">
+          <img class="brand__logo" src="images/1%20power%2C%20mixed%20media%2C%2080x100cm.JPG" alt="" width="2744" height="3564">
+        </span>
+        <span class="brand__title">leh<span class="brand__art">ART</span>s</span>
+      </a>
+      <nav class="site-nav" aria-label="Hauptmenü">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html">About</a></li>
+          <li><a class="site-nav__link" href="news.html">News</a></li>
+          <li><a class="site-nav__link" href="past-exhibitions.html">PAST EXHIBITIONS</a></li>
+          <li><a class="site-nav__link" href="paintings.html" aria-current="page">paintings</a></li>
+          <li><a class="site-nav__link" href="photography.html">Photography</a></li>
+          <li><a class="site-nav__link" href="more-projects.html">More Projects</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav class="site-nav" aria-label="Hauptmenü">
-      <ul class="site-nav__list">
-        <li><a class="site-nav__link" href="index.html">About</a></li>
-        <li><a class="site-nav__link" href="news.html">News</a></li>
-        <li><a class="site-nav__link" href="past-exhibitions.html">PAST EXHIBITIONS</a></li>
-        <li><a class="site-nav__link" href="paintings.html" aria-current="page">paintings</a></li>
-        <li><a class="site-nav__link" href="photography.html">Photography</a></li>
-        <li><a class="site-nav__link" href="more-projects.html">More Projects</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <!-- Kopfbild (dekorativ) -->
-  <div class="banner">
-    <img class="banner__image" src="images/14%20sorpresa%2C%20mixed%20media%2C%20100x100cm.jpg" alt="" width="2712" height="2713" loading="lazy">
-  </div>
+  <main class="main">
 
-  <div class="page">
+    <!-- Kopfbild der alten Website, als gemalter Pinselstrich (dekorativ) -->
+    <div class="stroke-hero container">
+      <div class="stroke-hero__frame">
+        <img class="stroke-hero__image" src="images/14%20sorpresa%2C%20mixed%20media%2C%20100x100cm.jpg" alt="" width="2712" height="2713" loading="lazy">
+      </div>
+    </div>
 
-    <main class="page__main">
-
-      <!-- Teil 1: Einzelbilder -->
-      <div class="gallery">
-        <figure class="figure">
-          <img class="figure__image" src="images/IMG_0545.jpg" alt="Furry news" width="626" height="640" loading="lazy">
-          <figcaption class="figure__caption">Furry news, Acryl auf Mixed Media auf Leinwand, 2024, 80x80cm <span class="figure__sold-out"><strong><em>sold out</em></strong></span></figcaption>
+    <!-- Teil 1: Werke mit Bildtext (Masonry) -->
+    <div class="gallery-section container">
+      <div class="masonry">
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/IMG_0545.jpg" alt="Furry news" width="626" height="640" loading="lazy"></div>
+          <figcaption class="work__caption">Furry news, Acryl auf Mixed Media auf Leinwand, 2024, 80x80cm <span class="work__sold"><strong><em>sold out</em></strong></span></figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/IMG_4092.jpg" alt="Love" width="640" height="640" loading="lazy">
-          <figcaption class="figure__caption">Love, Mixed Media auf Leinwand, 2023 <span class="figure__sold-out"><strong><em>sold out</em></strong></span></figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/IMG_4092.jpg" alt="Love" width="640" height="640" loading="lazy"></div>
+          <figcaption class="work__caption">Love, Mixed Media auf Leinwand, 2023 <span class="work__sold"><strong><em>sold out</em></strong></span></figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/IMG_0964.jpg" alt="Funky cow" width="640" height="640" loading="lazy">
-          <figcaption class="figure__caption">Funky cow, Acryl auf Leinwand, 2022, 80x80cm <span class="figure__sold-out"><strong><em>sold out</em></strong></span></figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/IMG_0964.jpg" alt="Funky cow" width="640" height="640" loading="lazy"></div>
+          <figcaption class="work__caption">Funky cow, Acryl auf Leinwand, 2022, 80x80cm <span class="work__sold"><strong><em>sold out</em></strong></span></figcaption>
         </figure>
-        <figure class="figure figure--pair">
-          <div class="figure__images">
-            <img class="figure__image" src="images/DD5995C3-086F-4C83-B417-40284BF2FF25.JPG" alt="Gemälde" width="640" height="640" loading="lazy">
-            <img class="figure__image" src="images/C428B35D-4A85-47E1-B2DB-97A8C013179D.JPG" alt="Vibes" width="640" height="640" loading="lazy">
-          </div>
-          <figcaption class="figure__caption">Vibes, Öl und Acryl auf Leinwand, 2024, 30x30cm</figcaption>
+        <figure class="work work--pair">
+            <div class="work__frame"><img class="work__image" src="images/DD5995C3-086F-4C83-B417-40284BF2FF25.JPG" alt="Gemälde" width="640" height="640" loading="lazy"></div>
+            <div class="work__frame"><img class="work__image" src="images/C428B35D-4A85-47E1-B2DB-97A8C013179D.JPG" alt="Vibes" width="640" height="640" loading="lazy"></div>
+          <figcaption class="work__caption">Vibes, Öl und Acryl auf Leinwand, 2024, 30x30cm</figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/bild11.jpg" alt="Freedom in Connection" width="640" height="640" loading="lazy">
-          <figcaption class="figure__caption">Freedom in Connection, Öl auf Acryl, 2024, 80x80cm</figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/bild11.jpg" alt="Freedom in Connection" width="640" height="640" loading="lazy"></div>
+          <figcaption class="work__caption">Freedom in Connection, Öl auf Acryl, 2024, 80x80cm</figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/bild10.jpg" alt="Nebula" width="640" height="640" loading="lazy">
-          <figcaption class="figure__caption">Nebula, Öl auf Acryl, 2024, 80x80cm <span class="figure__sold-out"><strong><em>sold out</em></strong></span></figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/bild10.jpg" alt="Nebula" width="640" height="640" loading="lazy"></div>
+          <figcaption class="work__caption">Nebula, Öl auf Acryl, 2024, 80x80cm <span class="work__sold"><strong><em>sold out</em></strong></span></figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/bild6.jpg" alt="High on Speed" width="510" height="640" loading="lazy">
-          <figcaption class="figure__caption">High on Speed, mixed media in Acryl, 2023, 60x80cm</figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/bild6.jpg" alt="High on Speed" width="510" height="640" loading="lazy"></div>
+          <figcaption class="work__caption">High on Speed, mixed media in Acryl, 2023, 60x80cm</figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/bild3.jpg" alt="Funky Muh 2" width="636" height="640" loading="lazy">
-          <figcaption class="figure__caption">Funky Muh 2, mixed media in Acryl, 2023, 80x80cm</figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/bild3.jpg" alt="Funky Muh 2" width="636" height="640" loading="lazy"></div>
+          <figcaption class="work__caption">Funky Muh 2, mixed media in Acryl, 2023, 80x80cm</figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/bild4.jpg" alt="Aries" width="634" height="640" loading="lazy">
-          <figcaption class="figure__caption">Aries, mixed media in Acryl auf Holz, 2024, 40x40cm <span class="figure__sold-out"><strong><em>sold out</em></strong></span></figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/bild4.jpg" alt="Aries" width="634" height="640" loading="lazy"></div>
+          <figcaption class="work__caption">Aries, mixed media in Acryl auf Holz, 2024, 40x40cm <span class="work__sold"><strong><em>sold out</em></strong></span></figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/bild2.jpg" alt="Funky Muh 1" width="620" height="640" loading="lazy">
-          <figcaption class="figure__caption">Funky Muh 1, mixed media in Acryl, 2023 80x80cm</figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/bild2.jpg" alt="Funky Muh 1" width="620" height="640" loading="lazy"></div>
+          <figcaption class="work__caption">Funky Muh 1, mixed media in Acryl, 2023 80x80cm</figcaption>
         </figure>
       </div>
+    </div>
 
-      <!-- Teil 2: Bildergalerie (22 Bilder, keine sichtbaren Titel) -->
-      <div class="gallery gallery--tiles">
-        <figure class="figure"><img class="figure__image" src="images/acryl.jpg" alt="Bild 1 von 22" width="2667" height="2667" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/aquarell.jpg" alt="Bild 2 von 22" width="3024" height="4032" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/acryl7.jpg" alt="Bild 3 von 22" width="2828" height="2119" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/acryl6.jpg" alt="Bild 4 von 22" width="3803" height="1828" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/acryl3.jpg" alt="Bild 5 von 22" width="3941" height="2930" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/aquarell2.jpg" alt="Bild 6 von 22" width="2890" height="1717" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/aquarell4.jpg" alt="Bild 7 von 22" width="2893" height="1743" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/aquarell5.jpg" alt="Bild 8 von 22" width="3024" height="4032" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/aquarell6.jpg" alt="Bild 9 von 22" width="2873" height="3960" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/aquarell7.jpg" alt="Bild 10 von 22" width="750" height="984" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/aquarell8.jpg" alt="Bild 11 von 22" width="3024" height="4032" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/B02646BD-5D0A-4010-8CE2-297C9A3F7DAE.JPG" alt="Bild 12 von 22" width="3024" height="3024" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_4086.jpg" alt="Bild 13 von 22" width="2882" height="3842" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_4248.jpg" alt="Bild 14 von 22" width="3024" height="4032" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_4266.jpg" alt="Bild 15 von 22" width="3024" height="4032" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_4267.jpg" alt="Bild 16 von 22" width="3024" height="4032" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_4286.jpg" alt="Bild 17 von 22" width="3795" height="2846" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_4406.jpg" alt="Bild 18 von 22" width="3024" height="4032" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_4334.jpg" alt="Bild 19 von 22" width="3024" height="4032" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_4456.jpg" alt="Bild 20 von 22" width="3858" height="2893" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_4560.jpg" alt="Bild 21 von 22" width="2882" height="3844" loading="lazy"></figure>
-        <figure class="figure"><img class="figure__image" src="images/IMG_5447.jpg" alt="Bild 22 von 22" width="750" height="750" loading="lazy"></figure>
+    <!-- Teil 2: Bildergalerie ohne sichtbare Titel (Skizzenbuch-Collage) -->
+    <div class="gallery-section container">
+      <div class="masonry masonry--sketchbook">
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/acryl.jpg" alt="Bild 1 von 22" width="2667" height="2667" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/aquarell.jpg" alt="Bild 2 von 22" width="3024" height="4032" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/acryl7.jpg" alt="Bild 3 von 22" width="2828" height="2119" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/acryl6.jpg" alt="Bild 4 von 22" width="3803" height="1828" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/acryl3.jpg" alt="Bild 5 von 22" width="3941" height="2930" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/aquarell2.jpg" alt="Bild 6 von 22" width="2890" height="1717" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/aquarell4.jpg" alt="Bild 7 von 22" width="2893" height="1743" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/aquarell5.jpg" alt="Bild 8 von 22" width="3024" height="4032" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/aquarell6.jpg" alt="Bild 9 von 22" width="2873" height="3960" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/aquarell7.jpg" alt="Bild 10 von 22" width="750" height="984" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/aquarell8.jpg" alt="Bild 11 von 22" width="3024" height="4032" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/B02646BD-5D0A-4010-8CE2-297C9A3F7DAE.JPG" alt="Bild 12 von 22" width="3024" height="3024" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/IMG_4086.jpg" alt="Bild 13 von 22" width="2882" height="3842" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/IMG_4248.jpg" alt="Bild 14 von 22" width="3024" height="4032" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/IMG_4266.jpg" alt="Bild 15 von 22" width="3024" height="4032" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/IMG_4267.jpg" alt="Bild 16 von 22" width="3024" height="4032" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/IMG_4286.jpg" alt="Bild 17 von 22" width="3795" height="2846" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/IMG_4406.jpg" alt="Bild 18 von 22" width="3024" height="4032" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/IMG_4334.jpg" alt="Bild 19 von 22" width="3024" height="4032" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/IMG_4456.jpg" alt="Bild 20 von 22" width="3858" height="2893" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/IMG_4560.jpg" alt="Bild 21 von 22" width="2882" height="3844" loading="lazy"></div></figure>
+        <figure class="work"><div class="work__frame"><img class="work__image" src="images/IMG_5447.jpg" alt="Bild 22 von 22" width="750" height="750" loading="lazy"></div></figure>
       </div>
+    </div>
 
-      <!-- Teil 3: Einzelbilder (Bildtexte in kleiner Schrift) -->
-      <div class="gallery">
-        <figure class="figure">
-          <img class="figure__image" src="images/1%20power%2C%20mixed%20media%2C%2080x100cm.JPG" alt="Power" width="2744" height="3564" loading="lazy">
-          <figcaption class="figure__caption figure__caption--small">Power, Öl auf Acryl, 2017, 80x100cm</figcaption>
+    <!-- Teil 3: Werke mit Bildtext in kleiner Schrift (Masonry) -->
+    <div class="gallery-section container">
+      <div class="masonry">
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/1%20power%2C%20mixed%20media%2C%2080x100cm.JPG" alt="Power" width="2744" height="3564" loading="lazy"></div>
+          <figcaption class="work__caption work__caption--small">Power, Öl auf Acryl, 2017, 80x100cm</figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/2%20Weitsicht%2C%20mixed%20media%2C%20100x100.JPG" alt="Weitsicht" width="3470" height="3467" loading="lazy">
-          <figcaption class="figure__caption figure__caption--small">Weitsicht, mixed media, 2017, 100x100cm</figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/2%20Weitsicht%2C%20mixed%20media%2C%20100x100.JPG" alt="Weitsicht" width="3470" height="3467" loading="lazy"></div>
+          <figcaption class="work__caption work__caption--small">Weitsicht, mixed media, 2017, 100x100cm</figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/3%20tierra%2C%20mixed%20media%2C%2050x150cm%20.JPG" alt="Tierra" width="5323" height="1752" loading="lazy">
-          <figcaption class="figure__caption figure__caption--small">Tierra, mixed media, 50x150cm</figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/3%20tierra%2C%20mixed%20media%2C%2050x150cm%20.JPG" alt="Tierra" width="5323" height="1752" loading="lazy"></div>
+          <figcaption class="work__caption work__caption--small">Tierra, mixed media, 50x150cm</figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/4%20esperanza%2C%20mixed%20media%2C%20100x100.JPG" alt="Esperanza" width="3488" height="3537" loading="lazy">
-          <figcaption class="figure__caption figure__caption--small">Esperanza, mixed media, 100x100cm</figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/4%20esperanza%2C%20mixed%20media%2C%20100x100.JPG" alt="Esperanza" width="3488" height="3537" loading="lazy"></div>
+          <figcaption class="work__caption work__caption--small">Esperanza, mixed media, 100x100cm</figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/6%20submarino%2C%20mixed%20media%2C%2070x100cm%20.JPG" alt="Submarino" width="4854" height="3377" loading="lazy">
-          <figcaption class="figure__caption figure__caption--small">Submarino, mixed media, 70x100cm</figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/6%20submarino%2C%20mixed%20media%2C%2070x100cm%20.JPG" alt="Submarino" width="4854" height="3377" loading="lazy"></div>
+          <figcaption class="work__caption work__caption--small">Submarino, mixed media, 70x100cm</figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/8%20alegria%2C%20mixed%20media%20auf%20Holz%2C%2080x80cm.JPG" alt="Alegria" width="3097" height="3100" loading="lazy">
-          <figcaption class="figure__caption figure__caption--small">Alegria, mixed media auf Holz, 80x80cm</figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/8%20alegria%2C%20mixed%20media%20auf%20Holz%2C%2080x80cm.JPG" alt="Alegria" width="3097" height="3100" loading="lazy"></div>
+          <figcaption class="work__caption work__caption--small">Alegria, mixed media auf Holz, 80x80cm</figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/9%20feliz%2C%20mixed%20media%2C%2080x120%20.JPG" alt="Feliz" width="4977" height="3288" loading="lazy">
-          <figcaption class="figure__caption figure__caption--small">Feliz, mixed media, 80x120cm</figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/9%20feliz%2C%20mixed%20media%2C%2080x120%20.JPG" alt="Feliz" width="4977" height="3288" loading="lazy"></div>
+          <figcaption class="work__caption work__caption--small">Feliz, mixed media, 80x120cm</figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/12%20Africa%2C%20mixed%20media%2C%2060x50cm%20.JPG" alt="Africa" width="2327" height="3459" loading="lazy">
-          <figcaption class="figure__caption figure__caption--small">Africa, mixed media, 60x65cm</figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/12%20Africa%2C%20mixed%20media%2C%2060x50cm%20.JPG" alt="Africa" width="2327" height="3459" loading="lazy"></div>
+          <figcaption class="work__caption work__caption--small">Africa, mixed media, 60x65cm</figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/14%20sorpresa%2C%20mixed%20media%2C%20100x100cm.jpg" alt="Sorpresa" width="2712" height="2713" loading="lazy">
-          <figcaption class="figure__caption figure__caption--small">Sorpresa, mixed media, 100x100cm <span class="figure__sold-out">sold out</span></figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/14%20sorpresa%2C%20mixed%20media%2C%20100x100cm.jpg" alt="Sorpresa" width="2712" height="2713" loading="lazy"></div>
+          <figcaption class="work__caption work__caption--small">Sorpresa, mixed media, 100x100cm <span class="work__sold">sold out</span></figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/15%20japanese%20spring%2C%20mixed%20media%2C%2060x60cm.jpg" alt="Japanese spring" width="3024" height="4032" loading="lazy">
-          <figcaption class="figure__caption figure__caption--small">Japanese spring, mixed media, 60x60cm</figcaption>
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/15%20japanese%20spring%2C%20mixed%20media%2C%2060x60cm.jpg" alt="Japanese spring" width="3024" height="4032" loading="lazy"></div>
+          <figcaption class="work__caption work__caption--small">Japanese spring, mixed media, 60x60cm</figcaption>
         </figure>
-        <figure class="figure">
-          <img class="figure__image" src="images/bild7.jpg" alt="Gemälde" width="584" height="640" loading="lazy">
+        <figure class="work">
+          <div class="work__frame"><img class="work__image" src="images/bild7.jpg" alt="Gemälde" width="584" height="640" loading="lazy"></div>
         </figure>
       </div>
+    </div>
 
-    </main>
+  </main>
 
-    <!-- Seitenleiste: Kontaktblock (auf allen Seiten gleich) -->
-    <aside class="sidebar" aria-label="Kontakt">
+  <!-- Fusszeile mit Kontaktblock (auf allen Seiten gleich) -->
+  <footer class="site-footer">
+    <div class="site-footer__inner container">
       <address class="contact">
         <strong>Rahel Kistler</strong><br>
         Zopfstrasse 10<br>
@@ -184,12 +195,8 @@
           </svg>
         </a>
       </address>
-    </aside>
-
-  </div>
-
-  <footer class="site-footer">
-    <p><a href="index.html">Startseite</a></p>
+      <p class="site-footer__home"><a class="site-footer__link" href="index.html">Startseite</a></p>
+    </div>
   </footer>
 
 </body>

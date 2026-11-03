@@ -15,44 +15,62 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
-<body>
+<body class="site site--about">
 
-  <!-- Kopfbereich mit Logo, Website-Titel und Menü (auf allen Seiten gleich) -->
+  <!-- Kopfzeile: Logo, Titel und Menü (auf allen Seiten gleich, bleibt beim Scrollen oben).
+       Das Menü ist eine normale Link-Liste und funktioniert ohne JavaScript. -->
   <header class="site-header">
-    <div class="site-header__brand">
-      <img class="site-header__logo" src="images/1%20power%2C%20mixed%20media%2C%2080x100cm.JPG" alt="" width="2744" height="3564">
-      <p class="site-header__title">lehARTs</p>
+    <div class="site-header__inner container">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">
+          <img class="brand__logo" src="images/1%20power%2C%20mixed%20media%2C%2080x100cm.JPG" alt="" width="2744" height="3564">
+        </span>
+        <span class="brand__title">leh<span class="brand__art">ART</span>s</span>
+      </a>
+      <nav class="site-nav" aria-label="Hauptmenü">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html" aria-current="page">About</a></li>
+          <li><a class="site-nav__link" href="news.html">News</a></li>
+          <li><a class="site-nav__link" href="past-exhibitions.html">PAST EXHIBITIONS</a></li>
+          <li><a class="site-nav__link" href="paintings.html">paintings</a></li>
+          <li><a class="site-nav__link" href="photography.html">Photography</a></li>
+          <li><a class="site-nav__link" href="more-projects.html">More Projects</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav class="site-nav" aria-label="Hauptmenü">
-      <ul class="site-nav__list">
-        <li><a class="site-nav__link" href="index.html" aria-current="page">About</a></li>
-        <li><a class="site-nav__link" href="news.html">News</a></li>
-        <li><a class="site-nav__link" href="past-exhibitions.html">PAST EXHIBITIONS</a></li>
-        <li><a class="site-nav__link" href="paintings.html">paintings</a></li>
-        <li><a class="site-nav__link" href="photography.html">Photography</a></li>
-        <li><a class="site-nav__link" href="more-projects.html">More Projects</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <!-- Kopfbild (dekorativ) -->
-  <div class="banner">
-    <img class="banner__image" src="images/IMG_3849.jpg" alt="" width="696" height="975" loading="lazy">
-  </div>
+  <main class="main">
 
-  <div class="page">
-
-    <main class="page__main">
-      <div class="text-block">
-        <p><strong>Farbige Lebendigkeit</strong></p>
-        <p>Die Ideen für Kistlers kreatives Tun entstehen beim bewussten Beobachten der Umgebung. „In der Natur finde ich die schönsten Kunstwerke“, sagt sie. Durch diese wird sie beflügelt, ihre Ideen in Farbe zu tauchen. Kistler malt, fotografiert und gestaltet Skulpturen. Sie lässt sich thematisch und technisch nicht einschränken. Im Vordergrund sind meist Tier und Mensch, denen sie mit Farbe und Strich Lebendigkeit verleiht. „Offen, spontan, experimentierfreudig“ sind die Attribute, welche das Wesen und das Schaffen von Kistler am besten beschreiben. Ihre Kreativität scheint grenzenlos. Als Sekundarlehrerin in Buttikon unterrichtet sie das Fach „Bildnerisches Gestalten“ und setzt so ihr grosses Talent auch beruflich ein.</p>
-        <img class="text-block__image" src="images/schlusswort.jpg" alt="Bild" width="750" height="932" loading="lazy">
+    <!-- Hero: Titel, Bio und Bildkomposition -->
+    <div class="hero container">
+      <div class="hero__text">
+        <p class="hero__title brush-title"><strong>Farbige Lebendigkeit</strong></p>
+        <p class="hero__bio">Die Ideen für Kistlers kreatives Tun entstehen beim bewussten Beobachten der Umgebung. „In der Natur finde ich die schönsten Kunstwerke“, sagt sie. Durch diese wird sie beflügelt, ihre Ideen in Farbe zu tauchen. Kistler malt, fotografiert und gestaltet Skulpturen. Sie lässt sich thematisch und technisch nicht einschränken. Im Vordergrund sind meist Tier und Mensch, denen sie mit Farbe und Strich Lebendigkeit verleiht. „Offen, spontan, experimentierfreudig“ sind die Attribute, welche das Wesen und das Schaffen von Kistler am besten beschreiben. Ihre Kreativität scheint grenzenlos. Als Sekundarlehrerin in Buttikon unterrichtet sie das Fach „Bildnerisches Gestalten“ und setzt so ihr grosses Talent auch beruflich ein.</p>
       </div>
-    </main>
+      <div class="hero__art">
+        <span class="hero__blob"></span>
+        <span class="hero__blob hero__blob--small"></span>
+        <!-- Kopfbild der alten Website, hier als gestalterisches Element -->
+        <img class="hero__backdrop" src="images/IMG_3849.jpg" alt="" width="696" height="975" loading="lazy">
+        <img class="hero__portrait" src="images/schlusswort.jpg" alt="Bild" width="750" height="932" loading="lazy">
+      </div>
+    </div>
 
-    <!-- Seitenleiste: Kontaktblock (auf allen Seiten gleich), darunter die Box nur auf About -->
-    <aside class="sidebar" aria-label="Kontakt">
+    <!-- Hinweis auf zukünftige Ausstellungen: auffälliger «Sticker» -->
+    <div class="notice">
+      <p class="notice__title">Zukünftige Ausstellungen <span class="notice__gap">!!!</span></p>
+      <p class="notice__hint">(für mehr Infos, auf <a href="news.html">News</a> klicken)</p>
+      <a class="button" href="https://kunstschwyz.ch" target="_blank" rel="noopener noreferrer">Hier geht's zur Kunstschwyz Seite</a>
+    </div>
+
+  </main>
+
+  <!-- Fusszeile mit Kontaktblock (auf allen Seiten gleich) -->
+  <footer class="site-footer">
+    <div class="site-footer__inner container">
       <address class="contact">
         <strong>Rahel Kistler</strong><br>
         Zopfstrasse 10<br>
@@ -68,18 +86,8 @@
           </svg>
         </a>
       </address>
-
-      <div class="notice">
-        <p class="notice__title">Zukünftige Ausstellungen <span class="notice__gap">!!!</span></p>
-        <p class="notice__hint">(für mehr Infos, auf <a href="news.html">News</a> klicken)</p>
-        <a class="button" href="https://kunstschwyz.ch" target="_blank" rel="noopener noreferrer">Hier geht's zur Kunstschwyz Seite</a>
-      </div>
-    </aside>
-
-  </div>
-
-  <footer class="site-footer">
-    <p><a href="index.html">Startseite</a></p>
+      <p class="site-footer__home"><a class="site-footer__link" href="index.html">Startseite</a></p>
+    </div>
   </footer>
 
 </body>

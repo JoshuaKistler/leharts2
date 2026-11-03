@@ -15,103 +15,131 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
-<body>
+<body class="site site--exhibitions">
 
-  <!-- Kopfbereich mit Logo, Website-Titel und Menü (auf allen Seiten gleich) -->
+  <!-- Kopfzeile: Logo, Titel und Menü (auf allen Seiten gleich, bleibt beim Scrollen oben).
+       Das Menü ist eine normale Link-Liste und funktioniert ohne JavaScript. -->
   <header class="site-header">
-    <div class="site-header__brand">
-      <img class="site-header__logo" src="images/1%20power%2C%20mixed%20media%2C%2080x100cm.JPG" alt="" width="2744" height="3564">
-      <p class="site-header__title">lehARTs</p>
+    <div class="site-header__inner container">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">
+          <img class="brand__logo" src="images/1%20power%2C%20mixed%20media%2C%2080x100cm.JPG" alt="" width="2744" height="3564">
+        </span>
+        <span class="brand__title">leh<span class="brand__art">ART</span>s</span>
+      </a>
+      <nav class="site-nav" aria-label="Hauptmenü">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html">About</a></li>
+          <li><a class="site-nav__link" href="news.html">News</a></li>
+          <li><a class="site-nav__link" href="past-exhibitions.html" aria-current="page">PAST EXHIBITIONS</a></li>
+          <li><a class="site-nav__link" href="paintings.html">paintings</a></li>
+          <li><a class="site-nav__link" href="photography.html">Photography</a></li>
+          <li><a class="site-nav__link" href="more-projects.html">More Projects</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav class="site-nav" aria-label="Hauptmenü">
-      <ul class="site-nav__list">
-        <li><a class="site-nav__link" href="index.html">About</a></li>
-        <li><a class="site-nav__link" href="news.html">News</a></li>
-        <li><a class="site-nav__link" href="past-exhibitions.html" aria-current="page">PAST EXHIBITIONS</a></li>
-        <li><a class="site-nav__link" href="paintings.html">paintings</a></li>
-        <li><a class="site-nav__link" href="photography.html">Photography</a></li>
-        <li><a class="site-nav__link" href="more-projects.html">More Projects</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <!-- Kopfbild (dekorativ) -->
-  <div class="banner">
-    <img class="banner__image" src="images/IMG_3849.jpg" alt="" width="696" height="975" loading="lazy">
-  </div>
+  <main class="main">
 
-  <div class="page">
-
-    <main class="page__main">
-      <div class="exhibitions text-block">
-        <h1>*Kuratierte Ausstellungen</h1>
-        <h2><em>März 2026 - Mai 2026:</em></h2>
-        <h3><em>Jahresausstellung Verein Kunst Schwyz Morschach*</em></h3>
-
-        <hr>
-
-        <h2><em>April 2025 - März 2026:</em></h2>
-        <h3><em>Jahresausstellung Einsiedeln</em></h3>
-        <img class="exhibitions__image" src="images/JahresaustellungEinsiedelnLeharts.png" alt="Ausstellung, Bild 1 von 2" width="887" height="888" loading="lazy">
-
-        <hr>
-
-        <h2><em>März 2024 - März 2025:</em></h2>
-        <p><strong><em>Jahresausstellung MedicoPlus art, Einsiedeln</em></strong></p>
-
-        <hr>
-
-        <p><strong><em>11. Mai 2024 - 26 . Mai 2024</em></strong></p>
-        <p><strong><em>Ausstellung Verein Kunst Schwyz/Pfäffikon</em></strong></p>
-
-        <hr>
-
-        <p><strong><em>Oktober 2024 - Ende Jahr 2024:</em></strong></p>
-        <p><strong><em>Kunstausstellung GartenBISTRO Näfels</em></strong></p>
-
-        <hr>
-
-        <p><strong><em>November 2022:</em></strong></p>
-        <h2>„Natürlich Kunst“ im Bahnhof Bäch vom</h2>
-        <p><strong>Die Kulturkommission Freienbach lädt zu einem surrealen Spaziergang durch die Natur ein. Die beiden Ausserschwyzer Künstler Rahel Kistler und Richard Cantieni präsentieren ihre Werke ab Freitag im Kulturhaus in Bäch.</strong></p>
-        <p>„Natürlich Kunst“: So schnörkellos wie der Titel der Kunstausstellung sind auch die Skulpturen und Bilder der Wangner Künstlerin Rahel Kistler und des Wiler Künstlers Richard Cantieni. Unter dem Patronat der Kulturkommission der Gemeinde Freienbach stellen die beiden eine Auswahl ihrer Werke vom 25. November bis 10. Dezember im Kulturhaus (Bahnhof) Bäch aus. Die Vernissage mit musikalischer Begleitung ist am Freitagabend von 18 bis 21 Uhr. Die Besucher der Ausstellung erwartet ein surrealer Sparziergang durch die Natur. Der Höfner Cantieni und die Märchlerin Kistler finden ihre Inspiration und die Materialien für ihre Kunst in der freien Natur – zumindest teilweise.</p>
-        <img class="exhibitions__image" src="images/Screenshot%202024-03-26%20200940.png" alt="Ausstellung, Bild 2 von 2" width="348" height="481" loading="lazy">
-
-        <hr>
-
-        <p><strong><em>Juni 2022:</em></strong></p>
-        <p><strong>3D Street Art in Zusammenarbeit mit Eduardo Relero in Lachen</strong></p>
-
-        <hr>
-
-        <p><strong><em>April 2022:</em></strong></p>
-        <p><strong>Jahresausstellung Verein Kunst Schwyz, Pfäffikon*</strong></p>
-
-        <hr>
-
-        <p><strong><em>Juni 2021:</em></strong></p>
-        <p><strong>Jahresausstellung Verein Kunst Schwyz, Siebnen</strong></p>
-
-        <hr>
-
-        <p><strong><em>März 2021:</em></strong></p>
-        <p><strong>Swissphotoclub, Zürich*</strong></p>
-
-        <hr>
-
-        <p><strong><em>Oktober 2020:</em></strong></p>
-        <p><strong>Arttalents Zürich</strong></p>
-
-        <hr>
-
-        <p><strong><em>August 2020:</em></strong></p>
-        <p><strong>Artbox/Project Zürich 2.0*</strong></p>
+    <!-- Kopfbild der alten Website, als gemalter Pinselstrich (dekorativ) -->
+    <div class="stroke-hero container">
+      <div class="stroke-hero__frame">
+        <img class="stroke-hero__image" src="images/IMG_3849.jpg" alt="" width="696" height="975" loading="lazy">
       </div>
-    </main>
+    </div>
 
-    <!-- Seitenleiste: Kontaktblock (auf allen Seiten gleich) -->
-    <aside class="sidebar" aria-label="Kontakt">
+    <div class="container">
+      <h1 class="page-title brush-title">*Kuratierte Ausstellungen</h1>
+    </div>
+
+    <!-- Zeitleiste: Ausstellungen in der Reihenfolge der alten Website -->
+    <ol class="timeline container">
+      <li class="timeline__item">
+        <div class="timeline__card">
+          <h2 class="timeline__date"><em>März 2026 - Mai 2026:</em></h2>
+          <h3 class="timeline__title"><em>Jahresausstellung Verein Kunst Schwyz Morschach*</em></h3>
+        </div>
+      </li>
+      <li class="timeline__item">
+        <div class="timeline__card">
+          <h2 class="timeline__date"><em>April 2025 - März 2026:</em></h2>
+          <h3 class="timeline__title"><em>Jahresausstellung Einsiedeln</em></h3>
+          <img class="timeline__image" src="images/JahresaustellungEinsiedelnLeharts.png" alt="Ausstellung, Bild 1 von 2" width="887" height="888" loading="lazy">
+        </div>
+      </li>
+      <li class="timeline__item">
+        <div class="timeline__card">
+          <h2 class="timeline__date"><em>März 2024 - März 2025:</em></h2>
+          <p class="timeline__title"><strong><em>Jahresausstellung MedicoPlus art, Einsiedeln</em></strong></p>
+        </div>
+      </li>
+      <li class="timeline__item">
+        <div class="timeline__card">
+          <p class="timeline__date"><strong><em>11. Mai 2024 - 26 . Mai 2024</em></strong></p>
+          <p class="timeline__title"><strong><em>Ausstellung Verein Kunst Schwyz/Pfäffikon</em></strong></p>
+        </div>
+      </li>
+      <li class="timeline__item">
+        <div class="timeline__card">
+          <p class="timeline__date"><strong><em>Oktober 2024 - Ende Jahr 2024:</em></strong></p>
+          <p class="timeline__title"><strong><em>Kunstausstellung GartenBISTRO Näfels</em></strong></p>
+        </div>
+      </li>
+      <li class="timeline__item">
+        <div class="timeline__card">
+          <p class="timeline__date"><strong><em>November 2022:</em></strong></p>
+          <h2 class="timeline__title">„Natürlich Kunst“ im Bahnhof Bäch vom</h2>
+          <p class="timeline__text"><strong>Die Kulturkommission Freienbach lädt zu einem surrealen Spaziergang durch die Natur ein. Die beiden Ausserschwyzer Künstler Rahel Kistler und Richard Cantieni präsentieren ihre Werke ab Freitag im Kulturhaus in Bäch.</strong></p>
+          <p class="timeline__text">„Natürlich Kunst“: So schnörkellos wie der Titel der Kunstausstellung sind auch die Skulpturen und Bilder der Wangner Künstlerin Rahel Kistler und des Wiler Künstlers Richard Cantieni. Unter dem Patronat der Kulturkommission der Gemeinde Freienbach stellen die beiden eine Auswahl ihrer Werke vom 25. November bis 10. Dezember im Kulturhaus (Bahnhof) Bäch aus. Die Vernissage mit musikalischer Begleitung ist am Freitagabend von 18 bis 21 Uhr. Die Besucher der Ausstellung erwartet ein surrealer Sparziergang durch die Natur. Der Höfner Cantieni und die Märchlerin Kistler finden ihre Inspiration und die Materialien für ihre Kunst in der freien Natur – zumindest teilweise.</p>
+          <img class="timeline__image" src="images/Screenshot%202024-03-26%20200940.png" alt="Ausstellung, Bild 2 von 2" width="348" height="481" loading="lazy">
+        </div>
+      </li>
+      <li class="timeline__item">
+        <div class="timeline__card">
+          <p class="timeline__date"><strong><em>Juni 2022:</em></strong></p>
+          <p class="timeline__title"><strong>3D Street Art in Zusammenarbeit mit Eduardo Relero in Lachen</strong></p>
+        </div>
+      </li>
+      <li class="timeline__item">
+        <div class="timeline__card">
+          <p class="timeline__date"><strong><em>April 2022:</em></strong></p>
+          <p class="timeline__title"><strong>Jahresausstellung Verein Kunst Schwyz, Pfäffikon*</strong></p>
+        </div>
+      </li>
+      <li class="timeline__item">
+        <div class="timeline__card">
+          <p class="timeline__date"><strong><em>Juni 2021:</em></strong></p>
+          <p class="timeline__title"><strong>Jahresausstellung Verein Kunst Schwyz, Siebnen</strong></p>
+        </div>
+      </li>
+      <li class="timeline__item">
+        <div class="timeline__card">
+          <p class="timeline__date"><strong><em>März 2021:</em></strong></p>
+          <p class="timeline__title"><strong>Swissphotoclub, Zürich*</strong></p>
+        </div>
+      </li>
+      <li class="timeline__item">
+        <div class="timeline__card">
+          <p class="timeline__date"><strong><em>Oktober 2020:</em></strong></p>
+          <p class="timeline__title"><strong>Arttalents Zürich</strong></p>
+        </div>
+      </li>
+      <li class="timeline__item">
+        <div class="timeline__card">
+          <p class="timeline__date"><strong><em>August 2020:</em></strong></p>
+          <p class="timeline__title"><strong>Artbox/Project Zürich 2.0*</strong></p>
+        </div>
+      </li>
+    </ol>
+
+  </main>
+
+  <!-- Fusszeile mit Kontaktblock (auf allen Seiten gleich) -->
+  <footer class="site-footer">
+    <div class="site-footer__inner container">
       <address class="contact">
         <strong>Rahel Kistler</strong><br>
         Zopfstrasse 10<br>
@@ -127,12 +155,8 @@
           </svg>
         </a>
       </address>
-    </aside>
-
-  </div>
-
-  <footer class="site-footer">
-    <p><a href="index.html">Startseite</a></p>
+      <p class="site-footer__home"><a class="site-footer__link" href="index.html">Startseite</a></p>
+    </div>
   </footer>
 
 </body>

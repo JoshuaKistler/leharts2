@@ -1,167 +1,755 @@
 /* ==========================================================================
-   components.css – wiederverwendbare Bausteine (Namen nach BEM:
-   block, block__element, block--modifier).
-   Enthält nur das Nötigste für ein sauberes Bildraster (CSS Grid).
+   components.css – wiederverwendbare Bausteine.
+   Klassennamen nach BEM: block, block__element, block--modifier.
+   Bewegungen (Keyframes, Scroll-Effekte) stehen gesammelt in animations.css.
    ========================================================================== */
 
-/* ---------- Kopfbild ---------- */
+/* ==========================================================================
+   Pinselstrich unter Titeln
+   Ein ::after-Element liegt hinter dem unteren Teil der Schrift wie ein
+   Textmarker. Seine Form kommt aus der Maske --shape-stroke (base.css).
+   ========================================================================== */
 
-.banner {
-  max-width: var(--content-max-width);
-  margin: 0 auto;
+.brush-title {
+  position: relative;
+  isolation: isolate;
+  width: fit-content;
 }
 
-.banner__image {
+.brush-title::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -0.2em;
+  right: -0.3em;
+  bottom: 0.02em;
+  height: 0.45em;
+  background: var(--accent-paint);
+  -webkit-mask: var(--shape-stroke) center / 100% 100% no-repeat;
+  mask: var(--shape-stroke) center / 100% 100% no-repeat;
+}
+
+/* ==========================================================================
+   Kopfbild in Pinselstrich-Form (paintings, Photography, More Projects,
+   PAST EXHIBITIONS). Kein Rechteck-Banner: das Bild erscheint in einem
+   breiten, gemalten Strich, dahinter ein versetzter Farbstrich.
+   ========================================================================== */
+
+.stroke-hero {
+  padding-top: var(--space-l);
+}
+
+.stroke-hero__frame {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Versetzter Farbstrich hinter dem Bild */
+.stroke-hero__frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--accent-paint);
+  -webkit-mask: var(--shape-swash) center / 100% 100% no-repeat;
+  mask: var(--shape-swash) center / 100% 100% no-repeat;
+  transform: translate(1.5%, 7%) rotate(1.5deg);
+}
+
+.stroke-hero__image {
   width: 100%;
-  height: clamp(10rem, 32vw, 22rem);
-  object-fit: cover; /* schneidet das Bild zu, statt es zu verzerren */
+  height: clamp(10rem, 4rem + 26vw, 26rem);
+  object-fit: cover; /* Bild füllt die Form, ohne verzerrt zu werden */
+  object-position: 50% 50%;
+  -webkit-mask: var(--shape-swash) center / 100% 100% no-repeat;
+  mask: var(--shape-swash) center / 100% 100% no-repeat;
+  transform: rotate(-1deg);
 }
 
-/* ---------- Bildraster ---------- */
+/* ==========================================================================
+   About: grosszügiger Hero mit Titel, Bio und Bildkomposition
+   ========================================================================== */
 
-/* Basis: 1 Spalte auf dem Handy, dann 2, 3 und 4 Spalten */
-.gallery {
+.hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-l) var(--space-m);
-  align-items: start;
+  gap: var(--space-xl);
+  align-items: center;
+  padding-block: var(--space-xl) var(--space-l);
+  overflow-x: clip; /* Kleckse dürfen nicht seitlich aus dem Bildschirm ragen */
 }
 
-@media (min-width: 40em) {
-  .gallery {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+.hero__title {
+  font-family: var(--font-display);
+  font-size: var(--title-l);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  font-synthesis: none;
+  hyphens: auto;
+}
+
+/* Young Serif hat nur einen Schnitt: «fett» bleibt der normale Schnitt */
+.hero__title strong {
+  font-weight: 400;
+}
+
+.hero__bio {
+  max-width: 36em;
+  margin-top: var(--space-l);
+  font-size: var(--text-l);
+  line-height: 1.7;
+}
+
+/* Initiale: der erste Buchstabe gross in der Titelschrift */
+.hero__bio::first-letter {
+  float: left;
+  margin: 0.1em 0.12em 0 0;
+  font-family: var(--font-display);
+  font-size: 3.4em;
+  line-height: 0.8;
+  color: var(--accent-ink);
+}
+
+/*
+ * Bildkomposition: Beide Bilder liegen im selben Grid-Feld übereinander
+ * (grid-area: 1 / …). So überlappen sie, ohne position: absolute.
+ */
+.hero__art {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  width: min(100%, 34rem);
+  justify-self: center;
+  padding-bottom: 14%;
+}
+
+/* Grosser Farbklecks hinter der Komposition */
+.hero__blob {
+  grid-area: 1 / 2 / 2 / 11;
+  z-index: -1;
+  align-self: center;
+  aspect-ratio: 1;
+  background: var(--accent-paint);
+  border-radius: var(--blob-1);
+  transform: translate(8%, -4%) scale(1.08);
+}
+
+/* Kleiner zweiter Klecks unten links */
+.hero__blob--small {
+  grid-area: 1 / 1 / 2 / 4;
+  align-self: end;
+  background: var(--accent-paint-2);
+  border-radius: var(--blob-3);
+  transform: translate(-30%, 40%);
+}
+
+/* Kopfbild der alten Seite (Figur vor Leinwand mit Schriftzug) */
+.hero__backdrop {
+  grid-area: 1 / 3 / 2 / 11;
+  width: 100%;
+  border-radius: var(--blob-2);
+  box-shadow: 0 30px 60px -30px rgb(34 22 43 / 0.45);
+}
+
+/* «schlusswort»: als schräg aufgelegtes Foto mit weissem Rand */
+.hero__portrait {
+  grid-area: 1 / 1 / 2 / 7;
+  align-self: end;
+  width: 100%;
+  border: clamp(0.4rem, 1.2vw, 0.7rem) solid #fff;
+  border-bottom-width: clamp(1.4rem, 4vw, 2.4rem);
+  box-shadow: 0 24px 40px -20px rgb(34 22 43 / 0.5);
+  transform: translateY(22%) rotate(-5deg);
+  transition: transform 0.6s var(--ease-spring);
+}
+
+.hero__portrait:hover {
+  transform: translateY(20%) rotate(-1deg) scale(1.03);
+}
+
+@media (min-width: 60em) {
+  .hero {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    min-height: calc(100vh - 4.5rem);
+  }
+}
+
+/* ==========================================================================
+   Box «Zukünftige Ausstellungen !!!» – auffälliger, schräger «Sticker»
+   ========================================================================== */
+
+.notice {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  justify-items: start;
+  gap: var(--space-s);
+  width: min(100% - 2 * var(--gutter), 46rem);
+  margin: var(--space-xl) auto 0;
+  padding: clamp(1.75rem, 1rem + 4vw, 3.5rem);
+  color: var(--color-violet);
+  font-weight: 700;
+  rotate: -2deg;
+}
+
+/* Hintergrundfläche mit leicht unregelmässigen Ecken */
+.notice::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-lime);
+  border-radius: 2.5rem 4rem 3rem 4.5rem / 4rem 2.5rem 4.5rem 3rem;
+  box-shadow: 0.6rem 0.6rem 0 var(--color-violet);
+}
+
+/* Farbspritzer oben rechts (drei runde Verläufe) */
+.notice::after {
+  content: "";
+  position: absolute;
+  top: -1.6rem;
+  right: -0.8rem;
+  width: 6rem;
+  height: 4.5rem;
+  background:
+    radial-gradient(circle at 30% 60%, var(--color-fox) 0 1.1rem, transparent 1.15rem),
+    radial-gradient(circle at 75% 25%, var(--color-sky) 0 0.7rem, transparent 0.75rem),
+    radial-gradient(circle at 88% 75%, var(--color-red) 0 0.35rem, transparent 0.4rem);
+  pointer-events: none;
+}
+
+.notice__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--title-m);
+  line-height: 1.05;
+}
+
+.notice__gap {
+  display: inline-block;
+  margin-inline-start: 0.35em;
+  color: var(--color-red);
+}
+
+.notice__hint {
+  font-size: var(--text-s);
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Button (Pille mit «Druck»-Schatten)
+   ========================================================================== */
+
+.button {
+  display: inline-block;
+  margin-top: var(--space-xs);
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  background: var(--color-violet);
+  color: var(--color-cream);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0.25rem 0.25rem 0 var(--color-ink);
+  transition:
+    transform 0.3s var(--ease-spring),
+    box-shadow 0.3s var(--ease-out),
+    background-color 0.3s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  background: var(--color-ink);
+  transform: translate(-0.15rem, -0.15rem) rotate(-1deg);
+  box-shadow: 0.45rem 0.45rem 0 var(--color-fox);
+}
+
+/* ==========================================================================
+   Grosse Aussage (News, 404): ein Satz, umgeben von Farbklecksen
+   ========================================================================== */
+
+.statement {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: 60vh;
+  padding-block: var(--space-2xl);
+  text-align: center;
+}
+
+.statement__text {
+  max-width: 16ch;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--title-l);
+  line-height: 1.05;
+  font-synthesis: none;
+}
+
+.statement__text strong {
+  font-weight: 400;
+}
+
+.statement__blob {
+  position: absolute;
+  z-index: -1;
+  border-radius: var(--blob-1);
+}
+
+.statement__blob--1 {
+  top: 12%;
+  left: max(2%, 50% - 30rem);
+  width: clamp(7rem, 20vw, 16rem);
+  aspect-ratio: 1;
+  background: var(--accent-paint);
+}
+
+.statement__blob--2 {
+  right: max(4%, 50% - 28rem);
+  bottom: 10%;
+  width: clamp(5rem, 13vw, 10rem);
+  aspect-ratio: 1;
+  background: var(--accent-paint-2);
+  border-radius: var(--blob-3);
+}
+
+/* ==========================================================================
+   Seitentitel (PAST EXHIBITIONS)
+   ========================================================================== */
+
+.page-title {
+  margin-top: var(--space-xl);
+  font-size: clamp(2rem, 1rem + 4.5vw, 5rem);
+  letter-spacing: -0.015em;
+}
+
+/* ==========================================================================
+   Zeitleiste (PAST EXHIBITIONS)
+   Mobil: Linie links, Karten rechts daneben.
+   Ab 64em: Linie in der Mitte, Karten abwechselnd links und rechts.
+   ========================================================================== */
+
+.timeline {
+  --line-x: 1.1rem; /* Position der Linie innerhalb des Containers */
+  position: relative;
+  display: grid;
+  gap: var(--space-l);
+  padding-block: var(--space-xl) 0;
+}
+
+/* Gewellte, gemalte Linie (wiederholte SVG-Welle als Maske) */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: var(--space-xl);
+  bottom: 0;
+  left: calc(var(--gutter) + var(--line-x) - 12px);
+  width: 24px;
+  background: var(--accent-paint);
+  -webkit-mask: var(--shape-wave) top center / 24px 160px repeat-y;
+  mask: var(--shape-wave) top center / 24px 160px repeat-y;
+}
+
+.timeline__item {
+  position: relative;
+  padding-left: calc(var(--line-x) + 1.75rem);
+}
+
+/* Farbtupfer auf der Linie */
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  left: calc(var(--line-x) - 0.85rem);
+  width: 1.7rem;
+  height: 1.7rem;
+  background: var(--color-lime);
+  border-radius: var(--blob-1);
+  box-shadow: 0 0 0 5px var(--color-cream);
+}
+
+/* Farben der Tupfer reihum wechseln */
+.timeline__item:nth-child(3n + 2)::before {
+  background: var(--color-fox);
+  border-radius: var(--blob-2);
+}
+
+.timeline__item:nth-child(3n)::before {
+  background: var(--color-violet);
+  border-radius: var(--blob-3);
+}
+
+.timeline__card {
+  padding: clamp(1.25rem, 0.8rem + 2vw, 2rem);
+  background: #fff;
+  border: 1px solid var(--color-paper);
+  border-radius: 1.25rem 2rem 1.5rem 2.25rem;
+  box-shadow: 0 18px 40px -28px rgb(34 22 43 / 0.35);
+  transition:
+    transform 0.45s var(--ease-spring),
+    box-shadow 0.45s var(--ease-out);
+}
+
+.timeline__card:hover {
+  transform: translateY(-4px) rotate(-0.4deg);
+  box-shadow:
+    0.5rem 0.5rem 0 var(--accent-paint),
+    0 24px 40px -28px rgb(34 22 43 / 0.45);
+}
+
+.timeline__card > * + * {
+  margin-top: var(--space-xs);
+}
+
+/* Datum: klein, kräftig, in der Akzentfarbe (gilt für h2 und p) */
+.timeline__date {
+  font-family: var(--font-text);
+  font-size: var(--text-s);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+  color: var(--accent-ink);
+}
+
+/* Ausstellungsname: in der Titelschrift (gilt für h2, h3 und p) */
+.timeline__title {
+  font-family: var(--font-display);
+  font-size: var(--title-s);
+  font-weight: 400;
+  line-height: 1.2;
+  font-synthesis: none;
+}
+
+.timeline__title strong {
+  font-weight: 400;
+}
+
+.timeline__text {
+  max-width: 40em;
+}
+
+.timeline__card > .timeline__text {
+  margin-top: var(--space-s);
+}
+
+.timeline__image {
+  width: min(100%, 24rem);
+  margin-top: var(--space-m);
+  border-radius: 0.75rem;
+}
+
+@media (min-width: 64em) {
+  .timeline {
+    --line-x: 50%;
+  }
+
+  .timeline::before {
+    left: calc(50% - 12px);
+  }
+
+  .timeline__item {
+    width: calc(50% - 2.75rem);
+    padding-left: 0;
+  }
+
+  /* gerade Einträge: rechte Seite */
+  .timeline__item:nth-child(even) {
+    margin-left: auto;
+  }
+
+  /* Tupfer sitzen jeweils auf der Mittellinie */
+  .timeline__item:nth-child(odd)::before {
+    left: auto;
+    right: calc(-2.75rem - 0.85rem);
+  }
+
+  .timeline__item:nth-child(even)::before {
+    left: calc(-2.75rem - 0.85rem);
+  }
+}
+
+/* ==========================================================================
+   Galerie-Abschnitte (paintings hat drei Teile)
+   ========================================================================== */
+
+.gallery-section {
+  padding-top: var(--space-xl);
+}
+
+/* Kleiner gemalter Trennstrich zwischen den Teilen */
+.gallery-section + .gallery-section::before {
+  content: "";
+  display: block;
+  width: clamp(6rem, 18vw, 10rem);
+  height: 1.2rem;
+  margin: 0 auto var(--space-xl);
+  background: var(--accent-paint-2);
+  -webkit-mask: var(--shape-stroke) center / 100% 100% no-repeat;
+  mask: var(--shape-stroke) center / 100% 100% no-repeat;
+}
+
+/* ==========================================================================
+   Masonry-Galerie (Werke mit Bildtext)
+   CSS-Spalten (columns): Die Bilder fliessen von oben nach unten durch die
+   Spalten und behalten ihr Seitenverhältnis – nichts wird abgeschnitten.
+   ========================================================================== */
+
+.masonry {
+  columns: 1;
+  column-gap: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.masonry > * {
+  break-inside: avoid; /* ein Werk nie auf zwei Spalten verteilen */
+  margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.25rem);
+}
+
+@media (min-width: 36em) {
+  .masonry {
+    columns: 2;
   }
 }
 
 @media (min-width: 64em) {
-  .gallery {
+  .masonry {
+    columns: 3;
+  }
+}
+
+/* Variante «Skizzenbuch»: mehr, kleinere Bilder wie aufgelegte Fotos */
+.masonry--sketchbook {
+  column-gap: clamp(0.75rem, 2vw, 1.5rem);
+  columns: 2;
+}
+
+.masonry--sketchbook > * {
+  margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+@media (min-width: 48em) {
+  .masonry--sketchbook {
+    columns: 3;
+  }
+}
+
+@media (min-width: 72em) {
+  .masonry--sketchbook {
+    columns: 4;
+  }
+}
+
+/* ==========================================================================
+   Werk (Bild + Bildtext)
+   ========================================================================== */
+
+.work__frame {
+  position: relative;
+  overflow: hidden; /* der Zoom beim Hover bleibt innerhalb des Rahmens */
+  border-radius: 0.35rem;
+  background: var(--color-paper);
+  box-shadow: 0 14px 30px -22px rgb(34 22 43 / 0.5);
+  transition:
+    transform 0.5s var(--ease-spring),
+    box-shadow 0.5s var(--ease-out);
+}
+
+.work__image {
+  width: 100%;
+  transition: transform 0.9s var(--ease-out);
+}
+
+/* Hover: leicht anheben, Bild zoomt, farbiger «Schatten» in der Akzentfarbe */
+.work:hover .work__frame {
+  transform: translateY(-6px);
+  box-shadow:
+    0.6rem 0.75rem 0 -0.1rem var(--accent-paint),
+    0 22px 36px -24px rgb(34 22 43 / 0.55);
+}
+
+.work:hover .work__image {
+  transform: scale(1.045);
+}
+
+/* Zwei Bilder mit gemeinsamem Bildtext («Vibes») */
+.work--pair .work__frame + .work__frame {
+  margin-top: var(--space-s);
+}
+
+.work__caption {
+  margin-top: var(--space-s);
+  font-size: var(--text-s);
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.work__caption--small {
+  font-size: 0.8125rem;
+}
+
+/*
+ * «sold out» als kleines Badge: Der Originaltext bleibt im Bildtext stehen
+ * und wird nur als farbige Pille gestaltet.
+ */
+.work__sold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  margin-inline-start: 0.4rem;
+  padding: 0.05rem 0.6rem 0.1rem;
+  border-radius: 999px;
+  background: var(--color-red);
+  color: var(--color-cream);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  vertical-align: 0.1em;
+}
+
+/* Zusätzlich: roter Punkt auf dem Bild – wie in Galerien für verkaufte Werke.
+   :has() wählt nur Werke aus, deren Bildtext ein «sold out» enthält. */
+.work:has(.work__sold) .work__frame::after {
+  content: "";
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  width: 0.95rem;
+  height: 0.95rem;
+  border-radius: 50%;
+  background: var(--color-red);
+  box-shadow: 0 0 0 3px var(--color-cream);
+}
+
+/* Skizzenbuch-Variante: weisser «Polaroid»-Rand, leicht schräg */
+.masonry--sketchbook .work__frame {
+  padding: 0.5rem 0.5rem 1.5rem;
+  background: #fff;
+  border-radius: 0.2rem;
+  rotate: -1.2deg;
+}
+
+.masonry--sketchbook .work:nth-child(even) .work__frame {
+  rotate: 1deg;
+}
+
+.masonry--sketchbook .work:nth-child(3n) .work__frame {
+  rotate: -0.4deg;
+}
+
+.masonry--sketchbook .work:hover .work__frame {
+  rotate: 0deg;
+}
+
+/* ==========================================================================
+   Collage-Galerie (Photography, More Projects)
+   CSS Grid mit «dense»: Lücken werden automatisch mit späteren Bildern
+   gefüllt. Breite Bilder belegen 2 Spalten, hohe Bilder 2 Zeilen.
+   ========================================================================== */
+
+.collage {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Zeilen sind mindestens so hoch – Text (Überschrift) darf sie vergrössern */
+  grid-auto-rows: minmax(clamp(8.5rem, 4rem + 18vw, 15rem), auto);
+  grid-auto-flow: dense;
+  gap: clamp(0.6rem, 0.3rem + 1.4vw, 1.4rem);
+  padding-top: var(--space-xl);
+}
+
+@media (min-width: 40em) {
+  .collage {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-@media (min-width: 80em) {
-  .gallery {
+@media (min-width: 64em) {
+  .collage {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
-/* Modifier "tiles": gleich grosse quadratische Felder, Bild wird nie beschnitten */
-.gallery--tiles {
-  align-items: stretch;
-}
-
-.gallery--tiles .figure {
+.collage__item {
   position: relative;
-  aspect-ratio: 1 / 1;
-  background: var(--color-surface);
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background: var(--color-paper);
+  transition:
+    transform 0.5s var(--ease-spring),
+    box-shadow 0.5s var(--ease-out);
 }
 
-/* Das Bild liegt absolut im Feld: so bestimmt nur das Feld (aspect-ratio) die Grösse */
-.gallery--tiles .figure__image {
+.collage__item--wide {
+  grid-column: span 2;
+}
+
+.collage__item--tall {
+  grid-row: span 2;
+}
+
+.collage__item--big {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Das Bild liegt absolut im Feld: so bestimmt nur das Grid die Grösse */
+.collage__image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s var(--ease-out);
+}
+
+.collage__item:hover {
+  z-index: 1;
+  transform: translateY(-6px) rotate(-0.6deg);
+  box-shadow:
+    0.55rem 0.65rem 0 -0.1rem var(--accent-paint),
+    0 22px 36px -24px rgb(34 22 43 / 0.55);
+}
+
+.collage__item:hover .collage__image {
+  transform: scale(1.06);
+}
+
+/*
+ * Variante «Passepartout» (More Projects: Skulpturen, Zeichnungen …):
+ * Die Werke werden NICHT beschnitten (contain), sondern liegen auf
+ * einer zart getönten Fläche in wechselnden Farben.
+ */
+.collage--mat .collage__item {
+  background: color-mix(in srgb, var(--color-lime) 22%, var(--color-cream));
+}
+
+.collage--mat .collage__item:nth-child(3n + 2) {
+  background: color-mix(in srgb, var(--color-sky) 30%, var(--color-cream));
+}
+
+.collage--mat .collage__item:nth-child(3n) {
+  background: color-mix(in srgb, var(--color-fox) 20%, var(--color-cream));
+}
+
+.collage--mat .collage__image {
+  inset: clamp(0.5rem, 1.5vw, 1rem);
+  width: calc(100% - 2 * clamp(0.5rem, 1.5vw, 1rem));
+  height: calc(100% - 2 * clamp(0.5rem, 1.5vw, 1rem));
   object-fit: contain;
 }
 
-/* Überschrift mitten im Raster (More Projects): eigene Zeile über alle Spalten */
-.gallery__heading {
+/* Überschrift mitten in der Collage (More Projects) */
+.collage__heading {
   grid-column: 1 / -1;
+  align-self: center;
+  justify-self: center;
+  padding: var(--space-m) var(--space-xs);
+  font-size: var(--title-m);
   text-align: center;
 }
 
-/* ---------- Bild mit Bildtext ---------- */
-
-.figure__image {
-  margin: 0 auto;
-}
-
-.figure__caption {
-  margin-top: var(--space-s);
-  text-align: center;
-}
-
-.figure__caption--small {
-  font-size: 0.875rem;
-}
-
-/* Abstand vor "sold out", bleibt in derselben Zeile */
-.figure__sold-out {
-  margin-inline-start: 1.5rem;
-}
-
-/* Zwei Bilder hintereinander mit gemeinsamem Bildtext ("Vibes") */
-.figure--pair .figure__images {
-  display: grid;
-  gap: var(--space-m);
-}
-
-/* ---------- Textblöcke ---------- */
-
-.text-block {
-  max-width: 45rem;
-}
-
-.text-block > * + * {
-  margin-top: var(--space-m);
-}
-
-.text-block__image {
-  margin-top: var(--space-l);
-}
-
-/* ---------- PAST EXHIBITIONS ---------- */
-
-.exhibitions > * + * {
-  margin-top: var(--space-m);
-}
-
-.exhibitions > hr {
-  margin: var(--space-l) 0;
-}
-
-.exhibitions__image {
-  max-width: 28rem;
-}
-
-/* ---------- Hinweis-Box (Zukünftige Ausstellungen) ---------- */
-
-.notice {
-  display: grid;
-  gap: var(--space-s);
-  justify-items: start;
-  color: var(--color-notice);
-  font-weight: 700;
-}
-
-.notice__title {
-  font-size: 1.75rem;
-  line-height: 1.2;
-}
-
-.notice__gap {
-  margin-inline-start: 1rem;
-}
-
-.notice__hint {
-  font-size: 0.875rem;
-  font-style: italic;
-}
-
-/* ---------- Button ---------- */
-
-.button {
-  display: inline-block;
-  padding: var(--space-s) var(--space-m);
-  border: 2px solid var(--color-accent);
-  background: var(--color-accent);
-  color: var(--color-bg);
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.button:hover {
-  background: var(--color-bg);
-  color: var(--color-accent);
+@media (min-width: 64em) {
+  .collage__heading {
+    grid-column: span 2;
+    grid-row: span 2;
+    padding-inline: var(--space-l);
+  }
 }
